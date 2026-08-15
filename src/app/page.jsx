@@ -13,9 +13,9 @@ import Footer from "@/components/Footer";
 
 // Page-level SEO metadata
 export const metadata = {
-  title: "Kavindu Kavisara — Creative Web Developer",
+  title: "Kavindu Kavisara — Cybersecurity & Network Engineering Portfolio",
   description:
-    "Portfolio of Kavindu Kavisara — Creative Web Developer & Computer Networking Student at NSBM Green University, Sri Lanka.",
+    "Portfolio of Kavindu Kavisara — Computer Networks student focused on cybersecurity, network security, systems, cloud, and secure full-stack development.",
 };
 
 export default function HomePage() {
