@@ -26,8 +26,7 @@ export default function AboutPreview() {
 
             <Reveal direction="up" delay={0.15}>
               <p className="font-dm text-muted text-base leading-relaxed">
-                I&apos;m Kavindu Kavisara, a third-year Computer Networks
-                student at{" "}
+                I&apos;m Kavindu Kavisara, a Computer Networks student at{" "}
                 <span className="text-text-light">NSBM Green University</span>,
                 Sri Lanka, and a BIT External undergraduate at the{" "}
                 <span className="text-text-light">University of Moratuwa</span>.
@@ -77,10 +76,10 @@ export default function AboutPreview() {
                 <div className="grid grid-cols-2 gap-8 mb-10">
                   <div>
                     <span className="font-syne font-bold text-4xl md:text-5xl text-accent">
-                      3rd
+                      NSBM
                     </span>
                     <p className="font-dm text-muted text-sm mt-1">
-                      Year Student
+                      Computer Networks
                     </p>
                   </div>
 

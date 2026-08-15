@@ -13,9 +13,12 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "LinkedIn", href: "https://linkedin.com/" },
-  { label: "Email", href: "mailto:kavindukavisara@gmail.com" },
+  { label: "GitHub", href: "https://github.com/kavisara-samarakoon" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/kavisara-samarakoon",
+  },
+  { label: "Email", href: "mailto:kavisaraksamarakoon@gmail.com" },
 ];
 
 export default function Footer() {
@@ -39,8 +42,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="font-dm text-muted text-sm leading-relaxed">
-              Creative Web Developer &amp; Computer Networking Student at NSBM
-              Green University, Sri Lanka.
+              Aspiring Cybersecurity Analyst &amp; Network Engineer and Computer
+              Networks student at NSBM Green University, Sri Lanka.
             </p>
           </div>
 

@@ -95,7 +95,7 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               {/* Contact CTA button — desktop only */}
               <a
-                href="mailto:kavindukavisara@gmail.com"
+                href="mailto:kavisaraksamarakoon@gmail.com"
                 className="hidden md:inline-flex items-center gap-2 px-5 py-2 border border-accent text-accent font-dm text-sm font-medium rounded-full hover:bg-accent hover:text-text-dark transition-all duration-300"
               >
                 Let&apos;s Talk

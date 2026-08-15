@@ -1,47 +1,58 @@
 // src/components/CTA.jsx
 // Reusable CTA (Call to Action) section
-// Used at the bottom of pages to prompt contact or next action
-// The "light" prop switches it to the off-white background variant
 "use client";
 
-import Link from "next/link";
 import Reveal from "./Reveal";
 
-/**
- * CTA Props:
- * @param {boolean} light  — If true, uses off-white bg (for dark pages). Default: false (uses dark bg)
- */
 export default function CTA({ light = false }) {
   const bgClass = light ? "light-section" : "bg-bg-dark";
   const headingClass = light ? "text-text-dark" : "text-text-light";
-  const mutedClass = light ? "text-text-dark/60" : "text-muted";
+  const mutedClass = light ? "text-text-dark/65" : "text-muted";
+  const secondaryButtonClass = light
+    ? "border-text-dark/30 text-text-dark hover:border-text-dark hover:bg-text-dark hover:text-text-light"
+    : "border-border text-text-light hover:border-accent hover:text-accent";
 
   return (
     <section className={`section-padding ${bgClass}`}>
       <div className="container-custom">
-        <div className="flex flex-col items-center text-center gap-8 max-w-3xl mx-auto">
-          {/* Pre-heading label */}
+        <div className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
+          {/* Label */}
           <Reveal direction="up">
-            <span className="tag">Get In Touch</span>
+            <span
+              className="tag"
+              style={
+                light
+                  ? {
+                    borderColor: "var(--border-light)",
+                    color: "var(--muted)",
+                  }
+                  : undefined
+              }
+            >
+              Get In Touch
+            </span>
           </Reveal>
 
-          {/* Main heading */}
+          {/* Heading */}
           <Reveal direction="up" delay={0.1}>
             <h2
               className={`font-syne font-bold ${headingClass} text-4xl md:text-5xl lg:text-6xl leading-tight`}
             >
-              Have an idea or{" "}
-              <span className="text-accent">opportunity?</span>
-              {" "}Let&apos;s talk.
+              Let&apos;s connect about{" "}
+              <span className="text-accent">networking, security,</span> or
+              tech opportunities.
             </h2>
           </Reveal>
 
-          {/* Subtext */}
+          {/* Description */}
           <Reveal direction="up" delay={0.15}>
-            <p className={`font-dm ${mutedClass} text-base md:text-lg leading-relaxed max-w-xl`}>
-              Whether you have a project in mind, want to collaborate on
-              something interesting, or just want to say hi — I&apos;d love to
-              hear from you.
+            <p
+              className={`font-dm ${mutedClass} text-base md:text-lg leading-relaxed max-w-2xl`}
+            >
+              I&apos;m open to internship opportunities, project collaboration,
+              technical discussions, and connections related to cybersecurity,
+              network engineering, system administration, cloud, and full-stack
+              development.
             </p>
           </Reveal>
 
@@ -49,7 +60,7 @@ export default function CTA({ light = false }) {
           <Reveal direction="up" delay={0.2}>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="mailto:kavindukavisara@gmail.com"
+                href="mailto:kavisaraksamarakoon@gmail.com"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-text-dark font-dm font-semibold text-sm rounded-full hover:bg-accent/80 transition-colors duration-300 group"
               >
                 Send Me an Email
@@ -58,6 +69,7 @@ export default function CTA({ light = false }) {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -67,28 +79,30 @@ export default function CTA({ light = false }) {
                   />
                 </svg>
               </a>
+
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/kavisara-samarakoon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-border text-text-light font-dm text-sm rounded-full hover:border-accent hover:text-accent transition-all duration-300"
+                className={`inline-flex items-center gap-2 px-8 py-4 border font-dm font-medium text-sm rounded-full transition-all duration-300 ${secondaryButtonClass}`}
               >
-                LinkedIn
+                View LinkedIn
               </a>
             </div>
           </Reveal>
 
-          {/* Subtle email display */}
+          {/* Direct contact line */}
           <Reveal direction="up" delay={0.25}>
-            <p className={`font-dm ${mutedClass} text-sm`}>
-              Or reach me directly at{" "}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 font-dm text-sm">
+              <span className={mutedClass}>Or reach me directly at</span>
+
               <a
-                href="mailto:kavindukavisara@gmail.com"
+                href="mailto:kavisaraksamarakoon@gmail.com"
                 className="text-accent hover:underline"
               >
-                kavindukavisara@gmail.com
+                kavisaraksamarakoon@gmail.com
               </a>
-            </p>
+            </div>
           </Reveal>
         </div>
       </div>

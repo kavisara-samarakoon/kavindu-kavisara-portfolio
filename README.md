@@ -1,8 +1,8 @@
 # Kavindu Kavisara — Portfolio Website
 
-A premium creative portfolio built with **Next.js 14**, **Tailwind CSS**, **GSAP**, **Framer Motion**, and **Lenis smooth scroll**.
+A student portfolio built with **Next.js 14**, **Tailwind CSS**, **GSAP**, **Framer Motion**, and **Lenis smooth scroll**.
 
-**Live site:** [kavindukavisara.vercel.app](https://kavindukavisara.vercel.app) *(update this after deploying)*
+No public deployment is currently listed.
 
 ---
 
@@ -16,7 +16,7 @@ A premium creative portfolio built with **Next.js 14**, **Tailwind CSS**, **GSAP
 | UI Motion    | Framer Motion                     |
 | Smooth Scroll| Lenis                             |
 | Fonts        | Syne (headings), DM Sans (body)   |
-| Deployment   | Vercel                            |
+| Deployment   | Not configured                    |
 | Language     | JavaScript (no TypeScript)        |
 
 ---
@@ -144,8 +144,9 @@ Your portfolio is live locally! 🎉
 All personal content is stored in the `src/data/` files — you never need to dig through components just to change your name or add a project.
 
 ### Changing personal info (name, email, links)
-Search for `kavindukavisara@gmail.com` across the project and replace with your real email.
-Search for `github.com/` and `linkedin.com/` and update to your actual profile URLs.
+- Email: `kavisaraksamarakoon@gmail.com`
+- GitHub: `https://github.com/kavisara-samarakoon`
+- LinkedIn: `https://www.linkedin.com/in/kavisara-samarakoon`
 
 ### Adding a new project
 Open `src/data/projects.js` and add a new object to the `projects` array:
@@ -259,16 +260,10 @@ You don't need to change anything — just click **Deploy**.
 
 Vercel will install packages, build the project, and deploy it.
 
-### Step 5 — Your live URL
+### Step 5 — Your deployment URL
 
-Once done, Vercel gives you a URL like:
-```
-https://kavindu-portfolio.vercel.app
-```
-
-Copy this and update it in:
-- `src/app/layout.jsx` → `openGraph.url`
-- `README.md` → Live site link at the top
+Only after a real deployment exists, use the exact URL supplied by the platform
+in the site metadata and README. Do not add a placeholder or guessed URL.
 
 ### Automatic deployments
 
@@ -332,12 +327,10 @@ This catches most build errors before you push. Fix any errors it shows, then pu
 
 Before going live, go through this list:
 
-- [ ] Replace `kavindukavisara@gmail.com` with your real email
-- [ ] Update GitHub and LinkedIn URLs in `Footer.jsx` and `MobileMenu.jsx`
-- [ ] Update the Vercel URL in `layout.jsx` metadata after deploying
+- [x] Use the correct email, GitHub, and LinkedIn details
+- [ ] Add a deployment URL only after a real public deployment exists
 - [ ] Review and edit project descriptions in `src/data/projects.js`
 - [ ] Check all text in `src/data/services.js` and `src/data/skills.js`
-- [ ] Update `README.md` with your actual live URL
 
 ---
 
