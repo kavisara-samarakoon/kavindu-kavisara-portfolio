@@ -1,0 +1,226 @@
+/* ================================================================
+   globals.css — Base styles, CSS variables, resets, utilities
+   ================================================================ */
+
+/* Import Google Fonts: Syne for headings, DM Sans for body */
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap");
+
+/* Tailwind base layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------------------------------
+   CSS Custom Properties (Design Tokens)
+   ---------------------------------------------------------------- */
+:root {
+  --bg-dark: #080808;
+  --bg-light: #f4f1ea;
+  --text-dark: #111111;
+  --text-light: #f5f5f5;
+  --muted: #8a8a8a;
+  --accent: #d8ff3e;
+  --border: #1a1a1a;
+  --border-light: #e0ddd6;
+
+  --font-syne: "Syne", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+
+  /* Fluid spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+  --space-2xl: 12rem;
+}
+
+/* ----------------------------------------------------------------
+   Base Reset & Global Styles
+   ---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: var(--font-dm-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ----------------------------------------------------------------
+   Custom Scrollbar
+   ---------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 99px;
+}
+
+/* ----------------------------------------------------------------
+   Typography
+   ---------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-syne);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-family: var(--font-dm-sans);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ----------------------------------------------------------------
+   Utility Classes (used across components)
+   ---------------------------------------------------------------- */
+
+/* Container — max-width wrapper with horizontal padding */
+.container-custom {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-custom {
+    padding: 0 5rem;
+  }
+}
+
+/* Section spacing */
+.section-padding {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
+/* Accent text color */
+.text-accent {
+  color: var(--accent);
+}
+
+/* Horizontal rule / divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+}
+
+.divider-light {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-light);
+}
+
+/* Accent pill / tag badge */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-family: var(--font-dm-sans);
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tag-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Clip path for reveal animations */
+.clip-hidden {
+  clip-path: inset(0 100% 0 0);
+}
+
+.clip-visible {
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ----------------------------------------------------------------
+   Selection Color
+   ---------------------------------------------------------------- */
+::selection {
+  background: var(--accent);
+  color: var(--text-dark);
+}
+
+/* ----------------------------------------------------------------
+   Reduced Motion Support
+   ---------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ----------------------------------------------------------------
+   Light Section Override (used for off-white bg sections)
+   ---------------------------------------------------------------- */
+.light-section {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.light-section .divider {
+  background-color: var(--border-light);
+}
