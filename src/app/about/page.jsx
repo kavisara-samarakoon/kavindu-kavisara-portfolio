@@ -1,6 +1,3 @@
-// src/app/about/page.jsx
-// About page — full personal introduction, background, skills, and career goals
-
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import Reveal from "@/components/Reveal";
@@ -25,9 +22,6 @@ export default function AboutPage() {
   );
 }
 
-// ----------------------------------------------------------------
-// About page hero header
-// ----------------------------------------------------------------
 function AboutHero() {
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg-dark">
@@ -58,9 +52,6 @@ function AboutHero() {
   );
 }
 
-// ----------------------------------------------------------------
-// Personal Introduction section
-// ----------------------------------------------------------------
 function IntroSection() {
   return (
     <section className="section-padding bg-bg-dark border-t border-border">
@@ -119,9 +110,6 @@ function IntroSection() {
   );
 }
 
-// ----------------------------------------------------------------
-// Academic Background section
-// ----------------------------------------------------------------
 function AcademicSection() {
   const educationItems = [
     {
@@ -302,9 +290,6 @@ function AcademicSection() {
   );
 }
 
-// ----------------------------------------------------------------
-// Learning Journey section
-// ----------------------------------------------------------------
 function LearningSection() {
   const milestones = [
     {
@@ -389,9 +374,6 @@ function LearningSection() {
   );
 }
 
-// ----------------------------------------------------------------
-// Career Goals section
-// ----------------------------------------------------------------
 function GoalsSection() {
   return (
     <section className="section-padding bg-bg-dark border-t border-border">

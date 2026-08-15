@@ -1,6 +1,3 @@
-// src/components/Footer.jsx
-// Site footer — shows name, nav links, social links, and copyright
-// Clean minimal design
 "use client";
 
 import Link from "next/link";
@@ -27,9 +24,7 @@ export default function Footer() {
   return (
     <footer className="bg-bg-dark border-t border-border">
       <div className="container-custom py-12 md:py-16">
-        {/* Top row: brand + nav + social */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-10 mb-12">
-          {/* Brand */}
           <div className="flex flex-col gap-4 max-w-xs">
             <Link href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 bg-accent rounded-sm flex items-center justify-center">
@@ -47,7 +42,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav links */}
           <div>
             <p className="font-dm text-muted text-xs uppercase tracking-widest mb-4">
               Navigation
@@ -66,7 +60,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social links */}
           <div>
             <p className="font-dm text-muted text-xs uppercase tracking-widest mb-4">
               Connect
@@ -103,10 +96,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="divider mb-6" />
 
-        {/* Bottom row: copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-dm text-muted text-xs">
             © {year} Kavindu Kavisara. All rights reserved.

@@ -1,6 +1,3 @@
-// src/components/SelectedWork.jsx
-// "Selected Work" section on the homepage
-// Shows a curated 2-project horizontal list with a "View All Work" CTA
 "use client";
 
 import Link from "next/link";
@@ -9,13 +6,11 @@ import ProjectCard from "./ProjectCard";
 import Reveal from "./Reveal";
 
 export default function SelectedWork() {
-  // Only show featured projects on the homepage
   const featuredProjects = getFeaturedProjects();
 
   return (
     <section className="section-padding bg-bg-dark">
       <div className="container-custom">
-        {/* Section header */}
         <Reveal direction="up">
           <div className="flex items-end justify-between mb-12 md:mb-16">
             <div>
@@ -41,14 +36,12 @@ export default function SelectedWork() {
           </div>
         </Reveal>
 
-        {/* Projects grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
-        {/* Mobile: View All button */}
         <Reveal direction="up" delay={0.2}>
           <div className="flex justify-center mt-10 md:hidden">
             <Link

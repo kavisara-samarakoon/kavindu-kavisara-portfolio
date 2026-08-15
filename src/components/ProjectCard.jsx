@@ -1,7 +1,3 @@
-// src/components/ProjectCard.jsx
-// Reusable project card — used in both SelectedWork and Work page
-// Shows: project title, type, year, short description, tech tags, and a "View" button
-// Has a hover effect that reveals the project visual
 "use client";
 
 import Link from "next/link";
@@ -23,7 +19,6 @@ export default function ProjectCard({ project, index = 0 }) {
     >
       <Link href={`/work/${project.slug}`} className="block">
         <div className="flex flex-col gap-6 p-6 md:p-8 border border-border hover:border-accent/30 rounded-sm transition-all duration-500 bg-border/20 hover:bg-border/40">
-          {/* Top row: number + type + year */}
           <div className="flex items-center justify-between">
             <span className="font-syne font-bold text-muted text-sm">
               {String(index + 1).padStart(2, "0")}
@@ -34,14 +29,12 @@ export default function ProjectCard({ project, index = 0 }) {
             </div>
           </div>
 
-          {/* Project visual placeholder */}
           <ProjectVisual
             slug={project.slug}
             className="w-full h-48 md:h-56"
             animated={false}
           />
 
-          {/* Project info */}
           <div className="flex flex-col gap-3">
             <h3 className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
               {project.title}
@@ -51,7 +44,6 @@ export default function ProjectCard({ project, index = 0 }) {
             </p>
           </div>
 
-          {/* Tech tags */}
           <div className="flex flex-wrap gap-2">
             {project.tech.slice(0, 4).map((tech) => (
               <span key={tech} className="tag text-xs">
@@ -63,7 +55,6 @@ export default function ProjectCard({ project, index = 0 }) {
             )}
           </div>
 
-          {/* View project link */}
           <div className="flex items-center gap-2 text-accent font-dm text-sm font-medium group/link">
             <span>View Project</span>
             <svg

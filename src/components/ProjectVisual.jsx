@@ -1,12 +1,7 @@
-// src/components/ProjectVisual.jsx
-// CSS gradient placeholder for project visuals
-// Since we don't use external images, each project gets a unique gradient design
-// This actually looks really good on a premium portfolio!
 "use client";
 
 import { motion } from "framer-motion";
 
-// Each project gets a unique gradient + decorative pattern
 const visualConfigs = {
   "personal-portfolio": {
     gradient: "from-accent/20 via-accent/5 to-transparent",
@@ -38,7 +33,6 @@ const visualConfigs = {
   },
 };
 
-// Fallback config if project slug isn't in the map
 const defaultConfig = {
   gradient: "from-accent/20 via-accent/5 to-transparent",
   accentColor: "#D8FF3E",
@@ -47,12 +41,6 @@ const defaultConfig = {
   label: "Project",
 };
 
-/**
- * ProjectVisual Props:
- * @param {string} slug       — Project slug to pick the matching visual
- * @param {string} className  — Extra CSS classes
- * @param {boolean} animated  — Whether to add hover animation (default: true)
- */
 export default function ProjectVisual({ slug, className = "", animated = true }) {
   const config = visualConfigs[slug] || defaultConfig;
 
@@ -62,10 +50,8 @@ export default function ProjectVisual({ slug, className = "", animated = true })
       whileHover={animated ? { scale: 1.02 } : {}}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      {/* Base gradient background */}
       <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient}`} />
 
-      {/* Grid lines pattern (optional) */}
       {config.lines && (
         <svg
           className="absolute inset-0 w-full h-full opacity-10"
@@ -90,7 +76,6 @@ export default function ProjectVisual({ slug, className = "", animated = true })
         </svg>
       )}
 
-      {/* Dots pattern (optional) */}
       {config.dots && (
         <svg
           className="absolute inset-0 w-full h-full opacity-15"
@@ -110,7 +95,6 @@ export default function ProjectVisual({ slug, className = "", animated = true })
         </svg>
       )}
 
-      {/* Center accent circle with glow */}
       <div
         className="absolute inset-0 flex items-center justify-center"
         style={{ filter: `drop-shadow(0 0 40px ${config.accentColor}40)` }}
@@ -131,7 +115,6 @@ export default function ProjectVisual({ slug, className = "", animated = true })
         </div>
       </div>
 
-      {/* Corner decorative element */}
       <div
         className="absolute top-4 right-4 w-12 h-12 border-t border-r opacity-30"
         style={{ borderColor: config.accentColor }}

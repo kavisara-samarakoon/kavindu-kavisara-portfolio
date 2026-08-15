@@ -1,13 +1,3 @@
-// src/lib/animations.js
-// Shared animation configurations for Framer Motion and GSAP
-// Import these in components to keep animation code DRY and consistent
-
-// ----------------------------------------------------------------
-// Framer Motion Variants
-// Use these as props: variants={fadeUpVariants} initial="hidden" whileInView="visible"
-// ----------------------------------------------------------------
-
-// Simple fade + slide up
 export const fadeUpVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -17,7 +7,6 @@ export const fadeUpVariants = {
   },
 };
 
-// Fade in only (no movement)
 export const fadeInVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -26,7 +15,6 @@ export const fadeInVariants = {
   },
 };
 
-// Slide in from left
 export const slideLeftVariants = {
   hidden: { opacity: 0, x: -40 },
   visible: {
@@ -36,7 +24,6 @@ export const slideLeftVariants = {
   },
 };
 
-// Slide in from right
 export const slideRightVariants = {
   hidden: { opacity: 0, x: 40 },
   visible: {
@@ -46,7 +33,6 @@ export const slideRightVariants = {
   },
 };
 
-// Scale up from slightly smaller
 export const scaleUpVariants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: {
@@ -56,7 +42,6 @@ export const scaleUpVariants = {
   },
 };
 
-// Container variant — triggers children stagger
 export const staggerContainerVariants = {
   hidden: {},
   visible: {
@@ -67,7 +52,6 @@ export const staggerContainerVariants = {
   },
 };
 
-// For staggered children
 export const staggerChildVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -77,12 +61,7 @@ export const staggerChildVariants = {
   },
 };
 
-// ----------------------------------------------------------------
-// GSAP Default Settings
-// Use these in useEffect() hooks with gsap.fromTo() or gsap.to()
-// ----------------------------------------------------------------
 
-// Standard scroll reveal — most elements use this
 export const gsapScrollReveal = (element, options = {}) => {
   return {
     from: {
@@ -106,7 +85,6 @@ export const gsapScrollReveal = (element, options = {}) => {
   };
 };
 
-// Horizontal line/bar animation (width 0 → 100%)
 export const gsapLineReveal = (element, delay = 0) => ({
   from: { scaleX: 0, transformOrigin: "left center" },
   to: {
@@ -122,11 +100,7 @@ export const gsapLineReveal = (element, delay = 0) => ({
   },
 });
 
-// ----------------------------------------------------------------
-// Transition presets for page/route transitions
-// ----------------------------------------------------------------
 
-// Standard page enter
 export const pageTransition = {
   initial: { opacity: 0, y: 15 },
   animate: { opacity: 1, y: 0 },

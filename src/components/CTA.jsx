@@ -1,5 +1,3 @@
-// src/components/CTA.jsx
-// Reusable CTA (Call to Action) section
 "use client";
 
 import Reveal from "./Reveal";
@@ -16,7 +14,6 @@ export default function CTA({ light = false }) {
     <section className={`section-padding ${bgClass}`}>
       <div className="container-custom">
         <div className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
-          {/* Label */}
           <Reveal direction="up">
             <span
               className="tag"
@@ -33,7 +30,6 @@ export default function CTA({ light = false }) {
             </span>
           </Reveal>
 
-          {/* Heading */}
           <Reveal direction="up" delay={0.1}>
             <h2
               className={`font-syne font-bold ${headingClass} text-4xl md:text-5xl lg:text-6xl leading-tight`}
@@ -44,7 +40,6 @@ export default function CTA({ light = false }) {
             </h2>
           </Reveal>
 
-          {/* Description */}
           <Reveal direction="up" delay={0.15}>
             <p
               className={`font-dm ${mutedClass} text-base md:text-lg leading-relaxed max-w-2xl`}
@@ -56,7 +51,6 @@ export default function CTA({ light = false }) {
             </p>
           </Reveal>
 
-          {/* CTA buttons */}
           <Reveal direction="up" delay={0.2}>
             <div className="flex flex-wrap justify-center gap-4">
               <a
@@ -91,7 +85,6 @@ export default function CTA({ light = false }) {
             </div>
           </Reveal>
 
-          {/* Direct contact line */}
           <Reveal direction="up" delay={0.25}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 font-dm text-sm">
               <span className={mutedClass}>Or reach me directly at</span>

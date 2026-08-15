@@ -1,6 +1,3 @@
-// src/data/skills.js
-// Skills and tools list for the Skills section
-
 export const skillCategories = [
   {
     id: 1,
@@ -52,7 +49,6 @@ export const skillCategories = [
   },
 ];
 
-// Flat list of all tool/tech tags — for the compact tags display
 export const techTags = [
   "Wireshark",
   "Cisco Packet Tracer",

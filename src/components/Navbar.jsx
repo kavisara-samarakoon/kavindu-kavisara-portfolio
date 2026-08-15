@@ -1,6 +1,3 @@
-// src/components/Navbar.jsx
-// Top navigation bar — logo, links, CTA button, mobile hamburger
-// Uses Framer Motion for entrance animation and scroll-based background change
 "use client";
 
 import { useState, useEffect } from "react";
@@ -9,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
-// Navigation links used in both desktop and mobile menu
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -21,7 +17,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Add a background to navbar once the user scrolls down
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -30,7 +25,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
@@ -49,7 +43,6 @@ export default function Navbar() {
       >
         <div className="container-custom">
           <nav className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo — stylized initials */}
             <Link
               href="/"
               className="flex items-center gap-2 group"
@@ -65,7 +58,6 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* Desktop Navigation Links */}
             <ul className="hidden md:flex items-center gap-8" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -78,7 +70,6 @@ export default function Navbar() {
                     }`}
                   >
                     {link.label}
-                    {/* Animated underline on hover */}
                     <span
                       className={`absolute -bottom-0.5 left-0 h-px bg-accent transition-all duration-300 ${
                         pathname === link.href
@@ -91,9 +82,7 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* Right side — CTA + hamburger */}
             <div className="flex items-center gap-4">
-              {/* Contact CTA button — desktop only */}
               <a
                 href="mailto:kavisaraksamarakoon@gmail.com"
                 className="hidden md:inline-flex items-center gap-2 px-5 py-2 border border-accent text-accent font-dm text-sm font-medium rounded-full hover:bg-accent hover:text-text-dark transition-all duration-300"
@@ -101,7 +90,6 @@ export default function Navbar() {
                 Let&apos;s Talk
               </a>
 
-              {/* Hamburger button — mobile only */}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none group"
@@ -129,7 +117,6 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Overlay */}
       <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );

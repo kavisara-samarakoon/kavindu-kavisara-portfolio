@@ -1,6 +1,3 @@
-// src/data/services.js
-// Focus areas shown on the homepage
-
 export const services = [
   {
     id: 1,

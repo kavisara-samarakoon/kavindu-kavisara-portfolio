@@ -1,7 +1,3 @@
-// src/app/work/[slug]/page.jsx
-// Dynamic project detail page — uses the slug from the URL to show the right project
-// Next.js App Router generates a static page for each project at build time
-
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjectBySlug, getAllProjectSlugs, projects } from "@/data/projects";
@@ -10,18 +6,11 @@ import ProjectVisual from "@/components/ProjectVisual";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 
-// ----------------------------------------------------------------
-// generateStaticParams — tells Next.js which slugs exist at build time
-// This enables Static Site Generation (SSG) for all project pages
-// ----------------------------------------------------------------
 export async function generateStaticParams() {
   const slugs = getAllProjectSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-// ----------------------------------------------------------------
-// generateMetadata — dynamic SEO title/description per project
-// ----------------------------------------------------------------
 export async function generateMetadata({ params }) {
   const project = getProjectBySlug(params.slug);
   if (!project) return { title: "Project Not Found" };
@@ -32,54 +21,37 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// ----------------------------------------------------------------
-// Main page component
-// ----------------------------------------------------------------
 export default function ProjectDetailPage({ params }) {
-  // Get the project data using the slug from the URL
   const project = getProjectBySlug(params.slug);
 
-  // If the project doesn't exist, show Next.js 404 page
   if (!project) return notFound();
 
-  // Find the next project for the "Next Project" section
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
     <>
-      {/* Project hero */}
       <ProjectHero project={project} />
 
-      {/* Project overview + details */}
       <ProjectDetails project={project} />
 
-      {/* Features list */}
       <ProjectFeatures project={project} />
 
-      {/* Visual showcase */}
       <ProjectVisuals project={project} />
 
-      {/* Result / learnings */}
       <ProjectResult project={project} />
 
-      {/* Next project + back to work */}
       <NextProjectSection currentProject={project} nextProject={nextProject} />
 
-      {/* Footer */}
       <Footer />
     </>
   );
 }
 
-// ----------------------------------------------------------------
-// Project Hero Section
-// ----------------------------------------------------------------
 function ProjectHero({ project }) {
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg-dark">
       <div className="container-custom">
-        {/* Breadcrumb */}
         <Reveal direction="up">
           <div className="flex items-center gap-2 mb-10">
             <Link
@@ -106,7 +78,6 @@ function ProjectHero({ project }) {
           </div>
         </Reveal>
 
-        {/* Project type + year */}
         <Reveal direction="up" delay={0.05}>
           <div className="flex items-center gap-4 mb-6">
             <span className="tag tag-accent">{project.type}</span>
@@ -114,21 +85,18 @@ function ProjectHero({ project }) {
           </div>
         </Reveal>
 
-        {/* Title */}
         <Reveal direction="up" delay={0.1}>
           <h1 className="font-syne font-bold text-text-light text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-8">
             {project.title}
           </h1>
         </Reveal>
 
-        {/* Short description */}
         <Reveal direction="up" delay={0.15}>
           <p className="font-dm text-muted text-base md:text-xl max-w-2xl leading-relaxed">
             {project.shortDescription}
           </p>
         </Reveal>
 
-        {/* Tech stack badges */}
         <Reveal direction="up" delay={0.2}>
           <div className="flex flex-wrap gap-2 mt-8">
             {project.tech.map((tech) => (
@@ -143,15 +111,11 @@ function ProjectHero({ project }) {
   );
 }
 
-// ----------------------------------------------------------------
-// Project Details: Overview, Challenge, My Role
-// ----------------------------------------------------------------
 function ProjectDetails({ project }) {
   return (
     <section className="section-padding bg-bg-dark border-t border-border">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-          {/* Overview */}
           <Reveal direction="up" delay={0.05} className="md:col-span-2">
             <div>
               <span className="font-dm text-muted text-xs uppercase tracking-widest mb-4 block">
@@ -166,7 +130,6 @@ function ProjectDetails({ project }) {
             </div>
           </Reveal>
 
-          {/* Quick info sidebar */}
           <Reveal direction="up" delay={0.1}>
             <div className="flex flex-col gap-6">
               <div>
@@ -193,7 +156,6 @@ function ProjectDetails({ project }) {
           </Reveal>
         </div>
 
-        {/* Challenge section */}
         <div className="mt-16 pt-16 border-t border-border">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <Reveal direction="up" className="md:col-span-4">
@@ -216,9 +178,6 @@ function ProjectDetails({ project }) {
   );
 }
 
-// ----------------------------------------------------------------
-// Features list
-// ----------------------------------------------------------------
 function ProjectFeatures({ project }) {
   return (
     <section className="section-padding light-section">
@@ -271,9 +230,6 @@ function ProjectFeatures({ project }) {
   );
 }
 
-// ----------------------------------------------------------------
-// Visual showcase (CSS gradient placeholders)
-// ----------------------------------------------------------------
 function ProjectVisuals({ project }) {
   return (
     <section className="section-padding bg-bg-dark">
@@ -287,12 +243,10 @@ function ProjectVisuals({ project }) {
           </div>
         </Reveal>
 
-        {/* Main visual */}
         <Reveal direction="up" delay={0.1}>
           <ProjectVisual slug={project.slug} className="w-full h-72 md:h-96" />
         </Reveal>
 
-        {/* Secondary visuals — two smaller side by side */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <Reveal direction="up" delay={0.15}>
             <ProjectVisual slug={project.slug} className="w-full h-40 md:h-52" />
@@ -306,9 +260,6 @@ function ProjectVisuals({ project }) {
   );
 }
 
-// ----------------------------------------------------------------
-// Result / Learning outcome
-// ----------------------------------------------------------------
 function ProjectResult({ project }) {
   return (
     <section className="section-padding bg-bg-dark border-t border-border">
@@ -333,15 +284,11 @@ function ProjectResult({ project }) {
   );
 }
 
-// ----------------------------------------------------------------
-// Next Project navigation
-// ----------------------------------------------------------------
 function NextProjectSection({ currentProject, nextProject }) {
   return (
     <section className="section-padding bg-bg-dark border-t border-border">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          {/* Back to work */}
           <Link
             href="/work"
             className="inline-flex items-center gap-2 text-muted hover:text-accent font-dm text-sm transition-colors duration-300 group"
@@ -362,7 +309,6 @@ function NextProjectSection({ currentProject, nextProject }) {
             Back to Work
           </Link>
 
-          {/* Next project */}
           {nextProject && nextProject.slug !== currentProject.slug && (
             <Link
               href={`/work/${nextProject.slug}`}
