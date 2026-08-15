@@ -23,8 +23,11 @@ export default function ProjectCard({ project, index = 0 }) {
             <span className="font-syne font-bold text-muted text-sm">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <div className="flex items-center gap-4">
-              <span className="tag">{project.type}</span>
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <span className="tag text-xs">{project.context}</span>
+              <span className="tag text-xs text-accent border-accent/30">
+                {project.status}
+              </span>
               <span className="text-muted font-dm text-xs">{project.year}</span>
             </div>
           </div>

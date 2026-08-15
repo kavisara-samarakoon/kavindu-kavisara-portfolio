@@ -144,6 +144,14 @@ function ProjectDetails({ project }) {
                 </span>
                 <p className="font-dm text-text-light text-sm">{project.year}</p>
               </div>
+              {project.status && (
+                <div>
+                  <span className="font-dm text-muted text-xs uppercase tracking-widest mb-2 block">
+                    Status
+                  </span>
+                  <p className="font-dm text-accent text-sm">{project.status}</p>
+                </div>
+              )}
               <div>
                 <span className="font-dm text-muted text-xs uppercase tracking-widest mb-2 block">
                   My Role

@@ -125,10 +125,13 @@ function ProjectRow({ project, index }) {
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-1 shrink-0 w-48">
-          <span className="font-dm text-muted text-xs uppercase tracking-wider">
-            {project.type}
-          </span>
+        <div className="flex flex-col items-end gap-2 shrink-0">
+          <div className="flex flex-wrap items-center justify-end gap-2 max-w-[18rem]">
+            <span className="tag text-xs">{project.context}</span>
+            <span className="tag text-xs text-accent border-accent/30">
+              {project.status}
+            </span>
+          </div>
           <span className="font-dm text-muted text-xs">{project.year}</span>
         </div>
 
