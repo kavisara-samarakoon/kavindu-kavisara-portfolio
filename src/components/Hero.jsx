@@ -1,5 +1,3 @@
-// src/components/Hero.jsx
-// Full-screen hero section — first impression of the portfolio
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -64,7 +62,6 @@ export default function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-20 pt-32 overflow-hidden"
     >
-      {/* Background decorative grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -74,7 +71,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Top-right label */}
       <div className="absolute top-24 right-6 md:right-16 flex flex-col items-end gap-1">
         <span className="text-muted text-xs font-dm tracking-widest uppercase">
           Based in Sri Lanka
@@ -84,16 +80,13 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Main content */}
       <div className="container-custom flex flex-col gap-8">
-        {/* Role badge */}
         <div ref={roleRef} className="opacity-0">
           <span className="tag tag-accent">
             Aspiring Cybersecurity Analyst & Network Engineer
           </span>
         </div>
 
-        {/* Name */}
         <div ref={nameRef} className="opacity-0">
           <h1 className="font-syne font-bold text-text-light leading-[0.9] tracking-tight">
             <span className="block text-[clamp(3.5rem,12vw,11rem)]">
@@ -105,10 +98,8 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Divider */}
         <div ref={lineRef} className="divider" style={{ scaleX: 0 }} />
 
-        {/* Description + CTA row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <p
             ref={descRef}
@@ -157,7 +148,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div
         ref={scrollIndicatorRef}
         className="opacity-0 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"

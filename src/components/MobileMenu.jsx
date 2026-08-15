@@ -1,6 +1,3 @@
-// src/components/MobileMenu.jsx
-// Full-screen mobile overlay navigation
-// Slides in from the right when hamburger is clicked
 "use client";
 
 import Link from "next/link";
@@ -12,7 +9,6 @@ const navLinks = [
   { label: "Work", href: "/work" },
 ];
 
-// Staggered animation variants for nav items
 const containerVariants = {
   hidden: {},
   visible: {
@@ -43,7 +39,6 @@ export default function MobileMenu({ isOpen, onClose }) {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-40 bg-bg-dark flex flex-col px-6 pt-24 pb-12"
         >
-          {/* Nav links — large editorial style */}
           <motion.ul
             variants={containerVariants}
             initial="hidden"
@@ -64,7 +59,6 @@ export default function MobileMenu({ isOpen, onClose }) {
             ))}
           </motion.ul>
 
-          {/* Bottom section — contact info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,7 +73,6 @@ export default function MobileMenu({ isOpen, onClose }) {
               kavisaraksamarakoon@gmail.com
             </a>
 
-            {/* Social links row */}
             <div className="flex gap-6 mt-2">
               <a
                 href="https://github.com/kavisara-samarakoon"

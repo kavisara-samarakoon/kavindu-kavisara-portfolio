@@ -1,6 +1,3 @@
-// src/components/Skills.jsx
-// Skills section — shows tech stack categories with animated level bars
-// and a flat list of all tools/technologies as tags
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -17,7 +14,6 @@ export default function Skills() {
   return (
     <section className="section-padding light-section">
       <div className="container-custom">
-        {/* Section header */}
         <Reveal direction="up">
           <div className="mb-16 md:mb-20">
             <span
@@ -42,17 +38,14 @@ export default function Skills() {
           </div>
         </Reveal>
 
-        {/* Skills categories grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-20">
           {skillCategories.map((category, i) => (
             <SkillCategory key={category.id} category={category} index={i} />
           ))}
         </div>
 
-        {/* Divider */}
         <div className="divider-light mb-16" />
 
-        {/* Tech tags */}
         <Reveal direction="up" delay={0.1}>
           <div>
             <p className="font-dm text-muted text-sm uppercase tracking-widest mb-8">
@@ -76,7 +69,6 @@ export default function Skills() {
   );
 }
 
-// Individual skill category with animated bars
 function SkillCategory({ category, index }) {
   const barsRef = useRef([]);
 
@@ -137,9 +129,7 @@ function SkillCategory({ category, index }) {
                 </span>
               </div>
 
-              {/* Bar track */}
               <div className="w-full h-1 bg-border-light rounded-full overflow-hidden">
-                {/* Animated fill bar */}
                 <div
                   ref={(el) => (barsRef.current[i] = el)}
                   className="h-full rounded-full"

@@ -1,5 +1,3 @@
-// src/components/AboutPreview.jsx
-// "About" teaser section on the homepage
 "use client";
 
 import Link from "next/link";
@@ -10,7 +8,6 @@ export default function AboutPreview() {
     <section className="section-padding bg-bg-dark">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left: Text content */}
           <div className="flex flex-col gap-8">
             <Reveal direction="up">
               <span className="tag tag-accent">About Me</span>
@@ -69,7 +66,6 @@ export default function AboutPreview() {
             </Reveal>
           </div>
 
-          {/* Right: Quick profile card */}
           <Reveal direction="left" delay={0.2}>
             <div className="relative">
               <div className="p-8 md:p-10 border border-border rounded-sm bg-border/20">

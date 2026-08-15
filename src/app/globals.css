@@ -1,18 +1,9 @@
-/* ================================================================
-   globals.css — Base styles, CSS variables, resets, utilities
-   ================================================================ */
-
-/* Import Google Fonts: Syne for headings, DM Sans for body */
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap");
 
-/* Tailwind base layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ----------------------------------------------------------------
-   CSS Custom Properties (Design Tokens)
-   ---------------------------------------------------------------- */
 :root {
   --bg-dark: #080808;
   --bg-light: #f4f1ea;
@@ -26,7 +17,6 @@
   --font-syne: "Syne", sans-serif;
   --font-dm-sans: "DM Sans", sans-serif;
 
-  /* Fluid spacing scale */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -35,9 +25,6 @@
   --space-2xl: 12rem;
 }
 
-/* ----------------------------------------------------------------
-   Base Reset & Global Styles
-   ---------------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -63,9 +50,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ----------------------------------------------------------------
-   Custom Scrollbar
-   ---------------------------------------------------------------- */
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -79,9 +63,6 @@ body {
   border-radius: 99px;
 }
 
-/* ----------------------------------------------------------------
-   Typography
-   ---------------------------------------------------------------- */
 h1,
 h2,
 h3,
@@ -109,11 +90,7 @@ img {
   display: block;
 }
 
-/* ----------------------------------------------------------------
-   Utility Classes (used across components)
-   ---------------------------------------------------------------- */
 
-/* Container — max-width wrapper with horizontal padding */
 .container-custom {
   width: 100%;
   max-width: 1400px;
@@ -133,7 +110,6 @@ img {
   }
 }
 
-/* Section spacing */
 .section-padding {
   padding-top: 7rem;
   padding-bottom: 7rem;
@@ -146,12 +122,10 @@ img {
   }
 }
 
-/* Accent text color */
 .text-accent {
   color: var(--accent);
 }
 
-/* Horizontal rule / divider */
 .divider {
   width: 100%;
   height: 1px;
@@ -164,7 +138,6 @@ img {
   background-color: var(--border-light);
 }
 
-/* Accent pill / tag badge */
 .tag {
   display: inline-block;
   padding: 0.3rem 0.9rem;
@@ -182,7 +155,6 @@ img {
   color: var(--accent);
 }
 
-/* Clip path for reveal animations */
 .clip-hidden {
   clip-path: inset(0 100% 0 0);
 }
@@ -192,17 +164,11 @@ img {
   transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* ----------------------------------------------------------------
-   Selection Color
-   ---------------------------------------------------------------- */
 ::selection {
   background: var(--accent);
   color: var(--text-dark);
 }
 
-/* ----------------------------------------------------------------
-   Reduced Motion Support
-   ---------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -213,9 +179,6 @@ img {
   }
 }
 
-/* ----------------------------------------------------------------
-   Light Section Override (used for off-white bg sections)
-   ---------------------------------------------------------------- */
 .light-section {
   background-color: var(--bg-light);
   color: var(--text-dark);

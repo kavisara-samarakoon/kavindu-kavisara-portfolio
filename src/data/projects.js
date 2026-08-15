@@ -1,7 +1,3 @@
-// src/data/projects.js
-// Central data store for all portfolio projects
-// Keeping data here makes it easy to add/edit projects later
-
 export const projects = [
   {
     id: 1,
@@ -179,17 +175,14 @@ export const projects = [
   },
 ];
 
-// Helper: get a project by its slug
 export function getProjectBySlug(slug) {
   return projects.find((p) => p.slug === slug) || null;
 }
 
-// Helper: get all project slugs
 export function getAllProjectSlugs() {
   return projects.map((p) => p.slug);
 }
 
-// Helper: get featured projects only
 export function getFeaturedProjects() {
   return projects.filter((p) => p.featured);
 }

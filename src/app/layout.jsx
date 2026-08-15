@@ -1,11 +1,8 @@
-// src/app/layout.jsx
-// Root layout — wraps every page with shared structure: fonts, metadata, SmoothScroll
 import "./globals.css";
 import { Syne, DM_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 
-// Load Syne font (editorial headings)
 const syne = Syne({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -13,7 +10,6 @@ const syne = Syne({
   display: "swap",
 });
 
-// Load DM Sans font (clean body text)
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
@@ -21,7 +17,6 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-// SEO Metadata — used by Next.js to populate <head>
 export const metadata = {
   title: {
     default:
@@ -65,7 +60,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
       <body className="bg-bg-dark text-text-light font-dm antialiased">
-        {/* SmoothScroll wraps all page content for Lenis smooth scrolling */}
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>

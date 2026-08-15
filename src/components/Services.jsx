@@ -1,5 +1,3 @@
-// src/components/Services.jsx
-// Focus Areas section — shows the main technical areas I am building toward
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -18,7 +16,6 @@ export default function Services() {
   return (
     <section ref={sectionRef} className="section-padding bg-bg-dark">
       <div className="container-custom">
-        {/* Section header */}
         <Reveal direction="up" delay={0}>
           <div className="flex items-end justify-between mb-16 md:mb-20">
             <div>
@@ -35,7 +32,6 @@ export default function Services() {
           </div>
         </Reveal>
 
-        {/* Focus areas list */}
         <div className="flex flex-col">
           {services.map((service, index) => (
             <ServiceRow key={service.id} service={service} index={index} />
@@ -46,7 +42,6 @@ export default function Services() {
   );
 }
 
-// Individual focus-area row
 function ServiceRow({ service, index }) {
   const rowRef = useRef(null);
 
@@ -82,22 +77,18 @@ function ServiceRow({ service, index }) {
       ref={rowRef}
       className="group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-7 border-b border-border hover:border-accent/30 transition-colors duration-500 cursor-default opacity-0"
     >
-      {/* Number */}
       <span className="font-syne font-bold text-muted text-sm w-10 shrink-0">
         {service.number}
       </span>
 
-      {/* Title */}
       <h3 className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300 w-full md:w-64 shrink-0">
         {service.title}
       </h3>
 
-      {/* Description */}
       <p className="font-dm text-muted text-sm md:text-base leading-relaxed flex-1">
         {service.description}
       </p>
 
-      {/* Tags */}
       <div className="flex flex-wrap gap-2 md:justify-end md:w-64 shrink-0">
         {service.tags.map((tag) => (
           <span key={tag} className="tag text-xs">
