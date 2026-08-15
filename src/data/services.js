@@ -1,53 +1,53 @@
 // src/data/services.js
-// Services/offerings list for the homepage Services section
+// Focus areas shown on the homepage
 
 export const services = [
   {
     id: 1,
     number: "01",
-    title: "Web Design",
+    title: "Network Engineering",
     description:
-      "Designing clean, modern layouts that look great on every screen size. I focus on visual hierarchy, typography, and user experience.",
-    tags: ["UI/UX", "Layout", "Typography"],
+      "Building a strong foundation in computer networks, routing, switching, IP addressing, subnetting, VLANs, and network troubleshooting.",
+    tags: ["Networking", "Routing", "Switching"],
   },
   {
     id: 2,
     number: "02",
-    title: "Frontend Development",
+    title: "Cybersecurity",
     description:
-      "Building responsive, interactive user interfaces using React, Next.js, and Tailwind CSS with smooth animations.",
-    tags: ["React", "Next.js", "Tailwind CSS"],
+      "Learning defensive security concepts such as threat detection, vulnerability awareness, access control, security monitoring, and incident response fundamentals.",
+    tags: ["Security", "Threat Detection", "Defense"],
   },
   {
     id: 3,
     number: "03",
-    title: "Responsive Websites",
+    title: "Network Security",
     description:
-      "Every website I build works perfectly on mobile, tablet, and desktop. No more 'only looks good on PC' situations.",
-    tags: ["Mobile First", "Cross-browser", "Accessible"],
+      "Practicing firewall configuration, traffic filtering, IDS concepts, secure network design, and monitoring using tools such as pfSense, Snort, and Wireshark.",
+    tags: ["pfSense", "Snort", "Wireshark"],
   },
   {
     id: 4,
     number: "04",
-    title: "UI/UX Implementation",
+    title: "System Administration",
     description:
-      "Taking design mockups and turning them into pixel-accurate, functional code. I bridge the gap between design and development.",
-    tags: ["Figma", "Component Systems", "Interaction Design"],
+      "Working with Linux, Windows environments, user management, services, logs, basic hardening, and system troubleshooting for practical IT operations.",
+    tags: ["Linux", "Windows", "Logs"],
   },
   {
     id: 5,
     number: "05",
-    title: "Academic & Personal Projects",
+    title: "Cloud & Infrastructure",
     description:
-      "Building real projects for assignments, personal learning, or portfolio purposes. I love experimenting with new ideas and tools.",
-    tags: ["Full-Stack", "Spring Boot", "Java"],
+      "Exploring cloud fundamentals, virtual machines, networking concepts, hosting, and infrastructure setup with a security-focused mindset.",
+    tags: ["Cloud", "VMs", "Infrastructure"],
   },
   {
     id: 6,
     number: "06",
-    title: "Network/Cybersecurity Concepts",
+    title: "Secure Full-Stack Development",
     description:
-      "Combining my networking studies with development to explore security dashboards, monitoring UIs, and cybersecurity concepts.",
-    tags: ["Networking", "Security Concepts", "APIs"],
+      "Using web development skills to build practical tools, dashboards, and platforms while learning secure coding, API design, and backend fundamentals.",
+    tags: ["Next.js", "Spring Boot", "APIs"],
   },
 ];
