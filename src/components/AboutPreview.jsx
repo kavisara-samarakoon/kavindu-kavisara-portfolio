@@ -23,7 +23,7 @@ export default function AboutPreview() {
 
             <Reveal direction="up" delay={0.15}>
               <p className="font-dm text-muted text-base leading-relaxed">
-                I&apos;m Kavindu Kavisara, a Computer Networks student at{" "}
+                I&apos;m Kavisara Samarakoon, a Computer Networks student at{" "}
                 <span className="text-text-light">NSBM Green University</span>,
                 Sri Lanka, and a BIT External undergraduate at the{" "}
                 <span className="text-text-light">University of Moratuwa</span>.

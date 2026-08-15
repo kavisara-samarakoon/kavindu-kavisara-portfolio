@@ -4,6 +4,8 @@ export const projects = [
     slug: "nexora",
     title: "NEXORA",
     type: "Network-Aware Full-Stack Platform",
+    context: "Full-Stack Platform",
+    status: "In Development",
     year: "2026",
     shortDescription:
       "A game deals and giveaways platform focused on performance, clean UI, backend API structure, and network-aware thinking.",
@@ -38,6 +40,8 @@ export const projects = [
     slug: "pfsense-firewall-lab",
     title: "pfSense Firewall & Network Security Lab",
     type: "Networking / Security Lab",
+    context: "Network Security Lab",
+    status: "Lab Project",
     year: "2026",
     shortDescription:
       "A practical network security lab focused on firewall configuration, traffic filtering, NAT, and secure network design.",
@@ -72,6 +76,8 @@ export const projects = [
     slug: "freebsd-asterisk-voip",
     title: "FreeBSD & Asterisk VoIP Configuration",
     type: "Networking / System Administration Lab",
+    context: "System Administration Lab",
+    status: "Lab Project",
     year: "2026",
     shortDescription:
       "A VoIP lab project using FreeBSD and Asterisk to understand SIP-based communication and server configuration.",
@@ -106,6 +112,8 @@ export const projects = [
     slug: "unimatelk",
     title: "UniMateLK",
     type: "Academic Full-Stack Web Application",
+    context: "Academic Full-Stack Project",
+    status: "Completed",
     year: "2026",
     shortDescription:
       "A roommate matching and chat platform built as an academic group project using Spring Boot, MySQL, Google OAuth, and real-time WebSocket communication.",
@@ -151,6 +159,8 @@ export const projects = [
     slug: "personal-portfolio",
     title: "Personal Portfolio Website",
     type: "Portfolio / Frontend Project",
+    context: "Personal Project",
+    status: "Active",
     year: "2026",
     shortDescription:
       "A personal portfolio website built to present my projects, skills, education, and career direction professionally.",

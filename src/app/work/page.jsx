@@ -5,17 +5,20 @@ import Reveal from "@/components/Reveal";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import ProjectVisual from "@/components/ProjectVisual";
+import GitHubHighlights from "@/components/GitHubHighlights";
 
 export const metadata = {
   title: "Work",
   description:
-    "Projects built by Kavindu Kavisara — web apps, dashboards, and more.",
+    "Projects built by Kavisara Samarakoon — web apps, dashboards, and more.",
 };
 
 export default function WorkPage() {
   return (
     <>
       <WorkHero />
+
+      <GitHubHighlights />
 
       <ProjectsList />
 
@@ -62,7 +65,7 @@ function WorkHero() {
             </div>
             <div>
               <span className="font-syne font-bold text-3xl text-text-light">
-                2024
+                {Math.max(...projects.map((project) => Number(project.year)))}
               </span>
               <p className="font-dm text-muted text-sm mt-0.5">Latest Year</p>
             </div>
@@ -125,23 +128,31 @@ function ProjectRow({ project, index }) {
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-1 shrink-0 w-48">
-          <span className="font-dm text-muted text-xs uppercase tracking-wider">
-            {project.type}
-          </span>
+        <div className="flex flex-col items-end gap-2 shrink-0">
+          <div className="flex flex-wrap items-center justify-end gap-2 max-w-[18rem]">
+            <span className="tag text-xs">{project.context}</span>
+            <span className="tag text-xs text-accent border-accent/30">
+              {project.status}
+            </span>
+          </div>
           <span className="font-dm text-muted text-xs">{project.year}</span>
         </div>
 
         <div className="w-32 h-24 overflow-hidden rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 shrink-0">
-          <ProjectVisual slug={project.slug} className="w-full h-full" animated={false} />
+          <ProjectVisual
+            slug={project.slug}
+            className="w-full h-full"
+            animated={false}
+          />
         </div>
 
         <div className="shrink-0 mt-1">
           <svg
-            className="w-5 h-5 text-muted group-hover:text-accent transition-colors duration-300 group-hover:translate-x-1 transform transition-transform"
+            className="w-5 h-5 text-muted group-hover:text-accent group-hover:translate-x-1 transform transition-all duration-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"

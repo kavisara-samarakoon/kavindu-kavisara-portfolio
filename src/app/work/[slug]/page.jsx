@@ -144,6 +144,14 @@ function ProjectDetails({ project }) {
                 </span>
                 <p className="font-dm text-text-light text-sm">{project.year}</p>
               </div>
+              {project.status && (
+                <div>
+                  <span className="font-dm text-muted text-xs uppercase tracking-widest mb-2 block">
+                    Status
+                  </span>
+                  <p className="font-dm text-accent text-sm">{project.status}</p>
+                </div>
+              )}
               <div>
                 <span className="font-dm text-muted text-xs uppercase tracking-widest mb-2 block">
                   My Role
@@ -244,15 +252,15 @@ function ProjectVisuals({ project }) {
         </Reveal>
 
         <Reveal direction="up" delay={0.1}>
-          <ProjectVisual slug={project.slug} className="w-full h-72 md:h-96" />
+          <ProjectVisual slug={project.slug} variant="overview" className="w-full h-72 md:h-96" />
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <Reveal direction="up" delay={0.15}>
-            <ProjectVisual slug={project.slug} className="w-full h-40 md:h-52" />
+            <ProjectVisual slug={project.slug} variant="architecture" className="w-full h-40 md:h-52" />
           </Reveal>
           <Reveal direction="up" delay={0.2}>
-            <ProjectVisual slug={project.slug} className="w-full h-40 md:h-52" />
+            <ProjectVisual slug={project.slug} variant="detail" className="w-full h-40 md:h-52" />
           </Reveal>
         </div>
       </div>

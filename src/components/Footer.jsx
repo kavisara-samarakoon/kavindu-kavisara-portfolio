@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -29,16 +28,19 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 bg-accent rounded-sm flex items-center justify-center">
                 <span className="font-syne font-bold text-text-dark text-sm">
-                  KK
+                  KS
                 </span>
               </div>
               <span className="font-syne font-semibold text-text-light">
-                Kavindu Kavisara
+                Kavisara Samarakoon
               </span>
             </Link>
             <p className="font-dm text-muted text-sm leading-relaxed">
-              Aspiring Cybersecurity Analyst &amp; Network Engineer and Computer
-              Networks student at NSBM Green University, Sri Lanka.
+              Aspiring Cybersecurity Analyst &amp; Network Engineer.
+            </p>
+            <p className="font-dm text-muted/60 text-xs leading-relaxed">
+              Focused on cybersecurity, networking, systems, and secure
+              development.
             </p>
           </div>
 
@@ -51,7 +53,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-dm text-muted hover:text-text-light text-sm transition-colors duration-300"
+                    className="font-dm text-muted hover:text-text-light text-sm transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -71,7 +73,7 @@ export default function Footer() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="font-dm text-muted hover:text-accent text-sm transition-colors duration-300 flex items-center gap-1.5 group"
+                    className="font-dm text-muted hover:text-accent text-sm transition-colors duration-300 flex items-center gap-1.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded-sm"
                   >
                     {link.label}
                     {link.href.startsWith("http") && (
@@ -80,6 +82,7 @@ export default function Footer() {
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
+                        aria-hidden="true"
                       >
                         <path
                           strokeLinecap="round"
@@ -100,10 +103,10 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-dm text-muted text-xs">
-            © {year} Kavindu Kavisara. All rights reserved.
+            © {year} Kavisara Samarakoon. All rights reserved.
           </p>
-          <p className="font-dm text-muted text-xs">
-            Built with Next.js &amp; Tailwind CSS
+          <p className="font-dm text-muted/60 text-xs">
+            Built with Next.js, Tailwind CSS, GSAP, Framer Motion, and Lenis.
           </p>
         </div>
       </div>
