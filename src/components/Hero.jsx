@@ -79,7 +79,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="absolute top-24 right-6 md:right-16 flex flex-col items-end gap-1">
+      <div className="hidden md:flex absolute top-24 right-16 flex-col items-end gap-1">
         <span className="text-muted text-xs font-dm tracking-widest uppercase">
           Based in Sri Lanka
         </span>
@@ -90,7 +90,7 @@ export default function Hero() {
 
       <div className="container-custom flex flex-col gap-8">
         <div ref={roleRef} className="opacity-0">
-          <span className="tag tag-accent">
+          <span className="tag tag-accent max-w-full text-center leading-relaxed">
             Aspiring Cybersecurity Analyst & Network Engineer
           </span>
         </div>
@@ -214,7 +214,7 @@ export default function Hero() {
 
       <div
         ref={imageRef}
-        className="opacity-0 hidden xl:block absolute right-36 2xl:right-44 top-[26%] 2xl:top-[28%] w-[260px] 2xl:w-[320px] pointer-events-none"
+        className="opacity-0 hidden xl:block absolute right-32 2xl:right-40 top-[26%] 2xl:top-[28%] w-[260px] 2xl:w-[320px] pointer-events-none"
       >
         <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
           <Image
@@ -239,7 +239,7 @@ export default function Hero() {
 
       <div
         ref={scrollIndicatorRef}
-        className="opacity-0 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="opacity-0 hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
       >
         <span className="text-muted text-xs font-dm tracking-widest uppercase">
           Scroll
