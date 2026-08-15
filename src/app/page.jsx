@@ -7,9 +7,9 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Kavindu Kavisara — Cybersecurity & Network Engineering Portfolio",
+  title: "Kavisara Samarakoon — Cybersecurity & Network Engineering Portfolio",
   description:
-    "Portfolio of Kavindu Kavisara — Computer Networks student focused on cybersecurity, network security, systems, cloud, and secure full-stack development.",
+    "Portfolio of Kavisara Samarakoon — Computer Networks student focused on cybersecurity, network security, systems, cloud, and secure full-stack development.",
 };
 
 export default function HomePage() {

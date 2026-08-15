@@ -9,7 +9,7 @@ import ProjectVisual from "@/components/ProjectVisual";
 export const metadata = {
   title: "Work",
   description:
-    "Projects built by Kavindu Kavisara — web apps, dashboards, and more.",
+    "Projects built by Kavisara Samarakoon — web apps, dashboards, and more.",
 };
 
 export default function WorkPage() {

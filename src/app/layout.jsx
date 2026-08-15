@@ -20,13 +20,13 @@ const dmSans = DM_Sans({
 export const metadata = {
   title: {
     default:
-      "Kavindu Kavisara — Aspiring Cybersecurity Analyst & Network Engineer",
-    template: "%s | Kavindu Kavisara",
+      "Kavisara Samarakoon — Aspiring Cybersecurity Analyst & Network Engineer",
+    template: "%s | Kavisara Samarakoon",
   },
   description:
     "Aspiring Cybersecurity Analyst and Network Engineer studying Computer Networks at NSBM Green University, with supporting skills in systems, cloud, and secure development.",
   keywords: [
-    "Kavindu Kavisara",
+    "Kavisara Samarakoon",
     "Cybersecurity Analyst",
     "Network Engineer",
     "Sri Lanka",
@@ -36,21 +36,21 @@ export const metadata = {
     "Next.js",
     "Computer Networks Student",
   ],
-  authors: [{ name: "Kavindu Kavisara" }],
-  creator: "Kavindu Kavisara",
+  authors: [{ name: "Kavisara Samarakoon" }],
+  creator: "Kavisara Samarakoon",
   openGraph: {
     type: "website",
     locale: "en_US",
     title:
-      "Kavindu Kavisara — Aspiring Cybersecurity Analyst & Network Engineer",
+      "Kavisara Samarakoon — Aspiring Cybersecurity Analyst & Network Engineer",
     description:
       "Computer Networks student building practical skills in cybersecurity, networking, systems, cloud, and secure development.",
-    siteName: "Kavindu Kavisara Portfolio",
+    siteName: "Kavisara Samarakoon Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Kavindu Kavisara — Aspiring Cybersecurity Analyst & Network Engineer",
+      "Kavisara Samarakoon — Aspiring Cybersecurity Analyst & Network Engineer",
     description:
       "Computer Networks student building practical skills in cybersecurity, networking, systems, cloud, and secure development.",
   },

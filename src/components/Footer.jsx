@@ -28,11 +28,11 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 bg-accent rounded-sm flex items-center justify-center">
                 <span className="font-syne font-bold text-text-dark text-sm">
-                  KK
+                  KS
                 </span>
               </div>
               <span className="font-syne font-semibold text-text-light">
-                Kavindu Kavisara
+                Kavisara Samarakoon
               </span>
             </Link>
             <p className="font-dm text-muted text-sm leading-relaxed">
@@ -103,7 +103,7 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-dm text-muted text-xs">
-            © {year} Kavindu Kavisara. All rights reserved.
+            © {year} Kavisara Samarakoon. All rights reserved.
           </p>
           <p className="font-dm text-muted/60 text-xs">
             Built with Next.js, Tailwind CSS, GSAP, Framer Motion, and Lenis.

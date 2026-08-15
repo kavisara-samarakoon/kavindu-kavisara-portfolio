@@ -98,10 +98,10 @@ export default function Hero() {
         <div ref={nameRef} className="opacity-0">
           <h1 className="font-syne font-bold text-text-light leading-[0.9] tracking-tight">
             <span className="block text-[clamp(3.5rem,12vw,11rem)]">
-              Kavindu
-            </span>
-            <span className="block text-[clamp(3.5rem,12vw,11rem)] text-accent">
               Kavisara
+            </span>
+            <span className="block text-[clamp(3rem,9vw,8rem)] text-accent">
+              Samarakoon
             </span>
           </h1>
         </div>
@@ -157,7 +157,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/kavisara-samarakoon"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Kavindu Kavisara on LinkedIn"
+                aria-label="Visit Kavisara Samarakoon on LinkedIn"
                 className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-border text-muted hover:border-accent hover:text-accent transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark"
               >
                 <svg
@@ -174,7 +174,7 @@ export default function Hero() {
                 href="https://github.com/kavisara-samarakoon"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit Kavindu Kavisara on GitHub"
+                aria-label="Visit Kavisara Samarakoon on GitHub"
                 className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-border text-muted hover:border-accent hover:text-accent transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark"
               >
                 <svg
@@ -189,7 +189,7 @@ export default function Hero() {
 
               <a
                 href="mailto:kavisaraksamarakoon@gmail.com"
-                aria-label="Email Kavindu Kavisara"
+                aria-label="Email Kavisara Samarakoon"
                 className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-border text-muted hover:border-accent hover:text-accent transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark"
               >
                 <svg
@@ -219,7 +219,7 @@ export default function Hero() {
         <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
           <Image
             src="/images/kavindu-profile.jpg"
-            alt="Kavindu Kavisara"
+            alt="Kavisara Samarakoon"
             width={900}
             height={1200}
             sizes="(min-width: 1536px) 320px, (min-width: 1280px) 260px, 0px"

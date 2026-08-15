@@ -50,11 +50,11 @@ export default function Navbar() {
             >
               <div className="w-8 h-8 bg-accent rounded-sm flex items-center justify-center">
                 <span className="font-syne font-bold text-text-dark text-sm leading-none">
-                  KK
+                  KS
                 </span>
               </div>
               <span className="font-syne font-semibold text-text-light text-sm tracking-wide hidden sm:block">
-                Kavindu
+                Kavisara
               </span>
             </Link>
 

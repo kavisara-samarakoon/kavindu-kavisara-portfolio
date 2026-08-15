@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 export const metadata = {
   title: "About",
   description:
-    "Learn about Kavindu Kavisara — a Computer Networks student focused on cybersecurity, network security, system administration, cloud technologies, and secure full-stack development.",
+    "Learn about Kavisara Samarakoon — a Computer Networks student focused on cybersecurity, network security, system administration, cloud technologies, and secure full-stack development.",
 };
 
 export default function AboutPage() {
@@ -33,7 +33,7 @@ function AboutHero() {
 
         <Reveal direction="up" delay={0.1}>
           <h1 className="font-syne font-bold text-text-light text-5xl md:text-7xl lg:text-8xl leading-tight tracking-tight">
-            Hi, I&apos;m <span className="text-accent">Kavindu</span>
+            Hi, I&apos;m <span className="text-accent">Kavisara</span>
           </h1>
         </Reveal>
 
@@ -66,7 +66,7 @@ function IntroSection() {
               <div className="mt-6 relative border border-border rounded-sm overflow-hidden bg-border/20">
                 <Image
                   src="/images/kavindu-about.jpg"
-                  alt="Kavindu Kavisara"
+                  alt="Kavisara Samarakoon"
                   width={720}
                   height={960}
                   sizes="(min-width: 1024px) 240px, (min-width: 768px) 200px, 100vw"

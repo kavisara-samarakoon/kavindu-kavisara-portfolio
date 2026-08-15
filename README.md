@@ -1,6 +1,6 @@
-# Kavindu Kavisara — Portfolio Website
+# Kavisara Samarakoon — Portfolio Website
 
-A personal portfolio website for **Kavindu Kavisara**, a Computer Networks student at **NSBM Green University** and BIT External undergraduate at the **University of Moratuwa**.
+A personal portfolio website for **Kavisara Samarakoon**, a Computer Networks student at **NSBM Green University** and BIT External undergraduate at the **University of Moratuwa**.
 
 The portfolio is focused on my career direction as an aspiring **Cybersecurity Analyst and Network Engineer**, while also showing my full-stack development, systems, cloud, and project-building skills.
 
@@ -216,7 +216,7 @@ Future improvements:
 
 ## 👤 Author
 
-**Kavindu Kavisara**  
+**Kavisara Samarakoon**  
 Computer Networks student at NSBM Green University  
 BIT External undergraduate at University of Moratuwa  
 Aspiring Cybersecurity Analyst & Network Engineer
