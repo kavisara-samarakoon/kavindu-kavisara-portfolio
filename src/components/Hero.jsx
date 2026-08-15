@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 
 export default function Hero() {
@@ -11,6 +12,7 @@ export default function Hero() {
   const descRef = useRef(null);
   const ctaRef = useRef(null);
   const lineRef = useRef(null);
+  const imageRef = useRef(null);
   const scrollIndicatorRef = useRef(null);
 
   useEffect(() => {
@@ -45,6 +47,12 @@ export default function Hero() {
           { scaleX: 0, transformOrigin: "left" },
           { scaleX: 1, duration: 1.2 },
           "-=0.8"
+        )
+        .fromTo(
+          imageRef.current,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          "-=1"
         )
         .fromTo(
           scrollIndicatorRef.current,
@@ -113,10 +121,7 @@ export default function Hero() {
             technologies, and secure full-stack development.
           </p>
 
-          <div
-            ref={ctaRef}
-            className="opacity-0 flex flex-col gap-5"
-          >
+          <div ref={ctaRef} className="opacity-0 flex flex-col gap-5">
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/work"
@@ -204,6 +209,31 @@ export default function Hero() {
               </a>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div
+        ref={imageRef}
+        className="opacity-0 hidden xl:block absolute right-36 2xl:right-44 top-[26%] 2xl:top-[28%] w-[260px] 2xl:w-[320px] pointer-events-none"
+      >
+        <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
+          <Image
+            src="/images/kavindu-profile.jpg"
+            alt="Kavindu Kavisara"
+            width={900}
+            height={1200}
+            sizes="(min-width: 1536px) 320px, (min-width: 1280px) 260px, 0px"
+            className="object-cover w-full h-auto"
+            priority
+          />
+          <div
+            className="absolute top-4 right-4 w-8 h-8 border-t border-r opacity-40"
+            style={{ borderColor: "var(--accent)" }}
+          />
+          <div
+            className="absolute bottom-4 left-4 w-8 h-8 border-b border-l opacity-40"
+            style={{ borderColor: "var(--accent)" }}
+          />
         </div>
       </div>
 

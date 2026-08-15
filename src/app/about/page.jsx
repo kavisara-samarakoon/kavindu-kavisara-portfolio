@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import Reveal from "@/components/Reveal";
@@ -60,6 +61,26 @@ function IntroSection() {
           <div className="lg:col-span-3">
             <Reveal direction="up">
               <span className="tag tag-accent">Who I Am</span>
+            </Reveal>
+            <Reveal direction="up" delay={0.1}>
+              <div className="mt-6 relative border border-border rounded-sm overflow-hidden bg-border/20">
+                <Image
+                  src="/images/kavindu-about.jpg"
+                  alt="Kavindu Kavisara"
+                  width={720}
+                  height={960}
+                  sizes="(min-width: 1024px) 240px, (min-width: 768px) 200px, 100vw"
+                  className="object-cover w-full h-auto"
+                />
+                <div
+                  className="absolute top-3 right-3 w-6 h-6 border-t border-r opacity-40"
+                  style={{ borderColor: "var(--accent)" }}
+                />
+                <div
+                  className="absolute bottom-3 left-3 w-6 h-6 border-b border-l opacity-40"
+                  style={{ borderColor: "var(--accent)" }}
+                />
+              </div>
             </Reveal>
           </div>
 
