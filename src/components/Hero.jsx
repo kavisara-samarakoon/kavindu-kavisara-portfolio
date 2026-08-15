@@ -1,7 +1,5 @@
 // src/components/Hero.jsx
-// Full-screen hero section — the first thing visitors see
-// Features: big animated name, role, tagline, and two CTA buttons
-// Uses GSAP for entrance animation (fires once on mount)
+// Full-screen hero section — first impression of the portfolio
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -9,7 +7,6 @@ import Link from "next/link";
 import gsap from "gsap";
 
 export default function Hero() {
-  // Refs to grab DOM elements for GSAP to target
   const heroRef = useRef(null);
   const nameRef = useRef(null);
   const roleRef = useRef(null);
@@ -19,45 +16,38 @@ export default function Hero() {
   const scrollIndicatorRef = useRef(null);
 
   useEffect(() => {
-    // Create a GSAP timeline for the staggered entrance animation
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // Animate the name in — big slide up
       tl.fromTo(
         nameRef.current,
         { y: 80, opacity: 0 },
         { y: 0, opacity: 1, duration: 1 }
       )
-        // Role badge slides in
         .fromTo(
           roleRef.current,
           { y: 30, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7 },
           "-=0.4"
         )
-        // Description fades in
         .fromTo(
           descRef.current,
           { y: 25, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7 },
           "-=0.3"
         )
-        // CTA buttons appear
         .fromTo(
           ctaRef.current,
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6 },
           "-=0.3"
         )
-        // Horizontal line draws in
         .fromTo(
           lineRef.current,
           { scaleX: 0, transformOrigin: "left" },
           { scaleX: 1, duration: 1.2 },
           "-=0.8"
         )
-        // Scroll indicator appears last
         .fromTo(
           scrollIndicatorRef.current,
           { opacity: 0 },
@@ -66,7 +56,6 @@ export default function Hero() {
         );
     }, heroRef);
 
-    // Cleanup GSAP context on component unmount
     return () => ctx.revert();
   }, []);
 
@@ -75,7 +64,7 @@ export default function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex flex-col justify-end pb-16 md:pb-20 pt-32 overflow-hidden"
     >
-      {/* Background decorative element — subtle grid */}
+      {/* Background decorative grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -85,29 +74,28 @@ export default function Hero() {
         }}
       />
 
-      {/* Top-right decorative label */}
+      {/* Top-right label */}
       <div className="absolute top-24 right-6 md:right-16 flex flex-col items-end gap-1">
         <span className="text-muted text-xs font-dm tracking-widest uppercase">
           Based in Sri Lanka
         </span>
         <span className="text-muted text-xs font-dm tracking-widest uppercase">
-          Open to Opportunities
+          Open to Cybersecurity & Networking Opportunities
         </span>
       </div>
 
-      {/* Main content wrapper */}
+      {/* Main content */}
       <div className="container-custom flex flex-col gap-8">
         {/* Role badge */}
         <div ref={roleRef} className="opacity-0">
           <span className="tag tag-accent">
-            Creative Web Developer & CS Student
+            Aspiring Cybersecurity Analyst & Network Engineer
           </span>
         </div>
 
-        {/* Name — huge editorial heading */}
+        {/* Name */}
         <div ref={nameRef} className="opacity-0">
           <h1 className="font-syne font-bold text-text-light leading-[0.9] tracking-tight">
-            {/* Mobile: smaller; Desktop: massive */}
             <span className="block text-[clamp(3.5rem,12vw,11rem)]">
               Kavindu
             </span>
@@ -117,24 +105,23 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Horizontal divider line */}
+        {/* Divider */}
         <div ref={lineRef} className="divider" style={{ scaleX: 0 }} />
 
         {/* Description + CTA row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-          {/* Description text */}
           <p
             ref={descRef}
-            className="opacity-0 font-dm text-muted text-base md:text-lg max-w-lg leading-relaxed"
+            className="opacity-0 font-dm text-muted text-base md:text-lg max-w-xl leading-relaxed"
           >
-            I design and build clean, modern web experiences while growing my
-            skills in networking, cybersecurity, and full-stack development.
-            Currently studying at{" "}
-            <span className="text-text-light">NSBM Green University</span>,
-            Sri Lanka.
+            Computer Networks student at{" "}
+            <span className="text-text-light">NSBM Green University</span> and
+            BIT External undergraduate at the{" "}
+            <span className="text-text-light">University of Moratuwa</span>.
+            Focused on network security, system administration, cloud
+            technologies, and secure full-stack development.
           </p>
 
-          {/* CTA Buttons */}
           <div
             ref={ctaRef}
             className="opacity-0 flex flex-wrap items-center gap-4"
@@ -143,12 +130,13 @@ export default function Hero() {
               href="/work"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-text-dark font-dm font-semibold text-sm rounded-full hover:bg-accent/80 transition-colors duration-300 group"
             >
-              View My Work
+              View Projects
               <svg
                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -158,6 +146,7 @@ export default function Hero() {
                 />
               </svg>
             </Link>
+
             <Link
               href="/about"
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-border text-text-light font-dm text-sm rounded-full hover:border-accent hover:text-accent transition-all duration-300"
@@ -168,7 +157,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator at the bottom */}
+      {/* Scroll indicator */}
       <div
         ref={scrollIndicatorRef}
         className="opacity-0 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
@@ -181,7 +170,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Inline style for scroll line animation */}
       <style jsx>{`
         @keyframes scrollLine {
           0% {
