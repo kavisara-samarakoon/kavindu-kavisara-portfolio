@@ -73,16 +73,16 @@ export default function MobileMenu({ isOpen, onClose }) {
           >
             <p className="text-muted font-dm text-sm">Get in touch</p>
             <a
-              href="mailto:kavindukavisara@gmail.com"
+              href="mailto:kavisaraksamarakoon@gmail.com"
               className="font-dm text-text-light hover:text-accent transition-colors duration-300"
             >
-              kavindukavisara@gmail.com
+              kavisaraksamarakoon@gmail.com
             </a>
 
             {/* Social links row */}
             <div className="flex gap-6 mt-2">
               <a
-                href="https://github.com/"
+                href="https://github.com/kavisara-samarakoon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted hover:text-accent text-sm font-dm transition-colors duration-300"
@@ -90,7 +90,7 @@ export default function MobileMenu({ isOpen, onClose }) {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/"
+                href="https://www.linkedin.com/in/kavisara-samarakoon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted hover:text-accent text-sm font-dm transition-colors duration-300"

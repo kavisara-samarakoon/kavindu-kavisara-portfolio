@@ -24,37 +24,40 @@ const dmSans = DM_Sans({
 // SEO Metadata — used by Next.js to populate <head>
 export const metadata = {
   title: {
-    default: "Kavindu Kavisara — Creative Web Developer",
+    default:
+      "Kavindu Kavisara — Aspiring Cybersecurity Analyst & Network Engineer",
     template: "%s | Kavindu Kavisara",
   },
   description:
-    "Creative Web Developer & Computer Networking Student at NSBM Green University, Sri Lanka. Building clean, modern web experiences.",
+    "Aspiring Cybersecurity Analyst and Network Engineer studying Computer Networks at NSBM Green University, with supporting skills in systems, cloud, and secure development.",
   keywords: [
     "Kavindu Kavisara",
-    "Web Developer",
+    "Cybersecurity Analyst",
+    "Network Engineer",
     "Sri Lanka",
     "NSBM",
     "Portfolio",
     "React",
     "Next.js",
-    "Networking Student",
+    "Computer Networks Student",
   ],
   authors: [{ name: "Kavindu Kavisara" }],
   creator: "Kavindu Kavisara",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://kavindukavisara.vercel.app",
-    title: "Kavindu Kavisara — Creative Web Developer",
+    title:
+      "Kavindu Kavisara — Aspiring Cybersecurity Analyst & Network Engineer",
     description:
-      "Creative Web Developer & Computer Networking Student building modern web experiences.",
+      "Computer Networks student building practical skills in cybersecurity, networking, systems, cloud, and secure development.",
     siteName: "Kavindu Kavisara Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kavindu Kavisara — Creative Web Developer",
+    title:
+      "Kavindu Kavisara — Aspiring Cybersecurity Analyst & Network Engineer",
     description:
-      "Creative Web Developer & Computer Networking Student building modern web experiences.",
+      "Computer Networks student building practical skills in cybersecurity, networking, systems, cloud, and secure development.",
   },
 };
 
