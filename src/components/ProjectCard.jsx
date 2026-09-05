@@ -59,7 +59,7 @@ export default function ProjectCard({ project, index = 0 }) {
           </div>
 
           <div className="flex items-center gap-2 text-accent font-dm text-sm font-medium group/link">
-            <span>View Project</span>
+            <span>{project.ctaLabel || "View Project"}</span>
             <svg
               className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
               fill="none"

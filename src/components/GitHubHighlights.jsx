@@ -1,5 +1,11 @@
 const githubProjects = [
   {
+    title: "SentinelLite AI",
+    repo: "sentinellite-ai",
+    type: "Cybersecurity CLI",
+    href: "https://github.com/kavisara-samarakoon/sentinellite-ai",
+  },
+  {
     title: "Portfolio Repo",
     repo: "kavindu-kavisara-portfolio",
     type: "Personal Portfolio",
@@ -16,12 +22,6 @@ const githubProjects = [
     repo: "network-security-lab-portfolio",
     type: "Security Lab",
     href: "https://github.com/kavisara-samarakoon/network-security-lab-portfolio",
-  },
-  {
-    title: "GitHub Profile",
-    repo: "kavisara-samarakoon",
-    type: "Profile README",
-    href: "https://github.com/kavisara-samarakoon/kavisara-samarakoon",
   },
 ];
 

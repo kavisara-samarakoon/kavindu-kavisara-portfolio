@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const ACCENT = "#D8FF3E";
 const MUTED = "#6b7280";
@@ -729,6 +730,11 @@ function PortfolioDetail() {
 // ─── Visual Registry ─────────────────────────────────────────────
 
 const projectVisuals = {
+  "sentinellite-ai": {
+    gradient: "from-accent/15 via-accent/5 to-transparent",
+    imageSrc: "/images/projects/sentinellite-ai/sentinellite-ai-validation-banner.png",
+    imageAlt: "SentinelLite AI v1.0.0-beta validation — 597 tests passed, CI success, cross-platform builds",
+  },
   nexora: {
     gradient: "from-accent/15 via-accent/5 to-transparent",
     overview: NexoraOverview,
@@ -793,6 +799,21 @@ export default function ProjectVisual({
 }) {
   const config = projectVisuals[slug];
   const gradient = config?.gradient || "from-accent/20 via-accent/5 to-transparent";
+
+  // Image-based visual (used by SentinelLite AI)
+  if (config?.imageSrc) {
+    return (
+      <VisualFrame slug={slug} className={className} animated={animated} gradient={gradient}>
+        <Image
+          src={config.imageSrc}
+          alt={config.imageAlt || "Project screenshot"}
+          fill
+          className="object-contain p-2"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </VisualFrame>
+    );
+  }
 
   let VisualComponent = DefaultVisual;
   if (config) {
