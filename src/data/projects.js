@@ -1,5 +1,115 @@
 export const projects = [
   {
+    id: 6,
+    slug: "sentinellite-ai",
+    title: "SentinelLite AI",
+    type: "Cybersecurity / Endpoint Observation CLI",
+    context: "Cybersecurity Project",
+    status: "v1.0.0-beta",
+    year: "2026",
+    shortDescription:
+      "A lightweight local defensive endpoint observation CLI for Linux-focused security learning, blue-team practice, and on-demand analysis.",
+    overview:
+      "SentinelLite AI is a beta-stage local defensive endpoint observation CLI built with Python. It observes selected endpoint/security data locally, normalizes it into security events, applies transparent rule-based detections, calculates deterministic risk scores, generates JSON reports, provides local investigation guidance, and supports local report review/export workflows.",
+    detailedDescription:
+      "SentinelLite AI is a beta-stage local defensive endpoint observation CLI built with Python. It observes selected endpoint/security data locally, normalizes it into security events, applies transparent rule-based detections, calculates deterministic risk scores, generates JSON reports, provides local investigation guidance, and supports local report review/export workflows.",
+    challenge:
+      "The main challenge was building a transparent, deterministic detection and scoring pipeline that produces meaningful security insights without relying on external services, cloud APIs, or AI/LLM models. Every detection rule, risk score calculation, and report output needed to be fully explainable and reproducible locally.",
+    myRole:
+      "I designed, developed, tested, validated, and released the entire project independently — including the CLI architecture, detection pipeline, scoring engine, report system, CI/CD workflows, cross-platform validation, and public GitHub pre-release.",
+    tech: [
+      "Python",
+      "Linux",
+      "Cybersecurity",
+      "Blue Team",
+      "Endpoint Security",
+      "Detection Engineering",
+      "CLI",
+      "JSON Reports",
+      "GitHub Actions",
+      "ARM64",
+    ],
+    features: [
+      "Local endpoint/security data observation",
+      "Security event normalization pipeline",
+      "Transparent rule-based detection engine",
+      "Deterministic risk score calculation",
+      "JSON report generation",
+      "Local investigation guidance",
+      "Report review and export workflows",
+      "597 automated tests passed",
+      "GitHub Actions CI validation",
+      "Cross-platform validation (macOS Apple Silicon, Ubuntu ARM64)",
+    ],
+    result:
+      "SentinelLite AI reached its v1.0.0-beta public pre-release with 597 automated tests passing, full CI/CD validation on Python 3.11 and Python 3.14, cross-platform builds on macOS Apple Silicon and Ubuntu ARM64, SHA-256 checksums, and a clean GitHub pre-release. It demonstrates practical defensive security engineering concepts, detection pipeline design, and disciplined software release practices.",
+    featured: true,
+    ctaLabel: "Read Case Study",
+    mainImage: "/images/projects/sentinellite-ai/sentinellite-ai-validation-banner.png",
+    externalLinks: [
+      {
+        label: "GitHub Repository",
+        href: "https://github.com/kavisara-samarakoon/sentinellite-ai",
+      },
+      {
+        label: "v1.0.0-beta Release",
+        href: "https://github.com/kavisara-samarakoon/sentinellite-ai/releases/tag/v1.0.0-beta",
+      },
+    ],
+    pipeline: [
+      "Observe",
+      "Normalize",
+      "Detect",
+      "Score",
+      "Explain",
+      "Report",
+      "Review",
+    ],
+    validation: [
+      "597 automated tests passed",
+      "Ruff linting passed",
+      "pip check passed",
+      "GitHub Actions CI passed",
+      "Python 3.11 and Python 3.14 CI validation",
+      "macOS Apple Silicon validation",
+      "Ubuntu ARM64 validation",
+      "Release artifacts rebuilt and validated",
+      "SHA-256 checksums generated",
+      "Public GitHub pre-release v1.0.0-beta",
+    ],
+    distribution: {
+      status: "v1.0.0-beta • Public GitHub Pre-release",
+      note: "Not yet published to PyPI. Install from GitHub release artifacts.",
+    },
+    safetyBoundaries: [
+      "Beta-stage, local, on-demand, defensive-only, and portfolio/security-learning focused",
+    ],
+    limitations: [
+      "Not a production EDR, antivirus, malware remover, SIEM, SOC platform, or enterprise-ready product",
+      "Not real AI/LLM-powered yet",
+      "Not PyPI-published yet",
+      "Not an automatic protection system",
+      "Does not run as a daemon or background service",
+      "Does not perform active network scanning or probing",
+      "Does not send packets or exploit systems",
+      "Does not perform automatic remediation",
+      "Does not terminate processes, block IPs, modify firewall rules, or delete/repair files",
+      "Does not send external notifications",
+    ],
+    gallery: [
+      {
+        src: "/images/projects/sentinellite-ai/sentinellite-ai-validation-banner.png",
+        alt: "SentinelLite AI v1.0.0-beta validation — 597 tests passed, CI success, cross-platform builds",
+        caption: "v1.0.0-beta Validation Summary",
+      },
+      {
+        src: "/images/projects/sentinellite-ai/journey.png",
+        alt: "SentinelLite AI project journey from v0.1.0-alpha to v1.0.0-beta",
+        caption: "Project Journey — Alpha to Beta",
+      },
+    ],
+  },
+  {
     id: 1,
     slug: "nexora",
     title: "NEXORA",
