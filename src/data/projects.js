@@ -144,6 +144,29 @@ export const projects = [
     result:
       "This project is still in progress, but it is becoming one of my strongest portfolio projects because it shows both full-stack development ability and my interest in building scalable, practical systems.",
     featured: true,
+    mainImage: "/images/projects/nexora/nexora-main.png",
+    gallery: [
+      {
+        src: "/images/projects/nexora/nexora-main.png",
+        alt: "NEXORA full-stack game deals intelligence MVP showcase",
+        caption: "NEXORA — Full-Stack Game Deals Intelligence MVP",
+      },
+      {
+        src: "/images/projects/nexora/nexora-showcase-1.png",
+        alt: "NEXORA authentication and dashboard showcase",
+        caption: "Authentication & Dashboard",
+      },
+      {
+        src: "/images/projects/nexora/nexora-showcase-2.png",
+        alt: "NEXORA deals and alert workflow showcase",
+        caption: "Deals & Alert Workflow",
+      },
+      {
+        src: "/images/projects/nexora/nexora-showcase-3.png",
+        alt: "NEXORA wishlist, security, and Sentinel interface showcase",
+        caption: "Wishlist, Security & Sentinel Interface",
+      },
+    ],
   },
   {
     id: 2,

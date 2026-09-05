@@ -737,6 +737,8 @@ const projectVisuals = {
   },
   nexora: {
     gradient: "from-accent/15 via-accent/5 to-transparent",
+    imageSrc: "/images/projects/nexora/nexora-main.png",
+    imageAlt: "NEXORA full-stack game deals intelligence MVP showcase",
     overview: NexoraOverview,
     architecture: NexoraArchitecture,
     detail: NexoraDetail,
