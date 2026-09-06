@@ -88,22 +88,51 @@ export default function Hero() {
         </span>
       </div>
 
-      <div className="container-custom flex flex-col gap-8">
-        <div ref={roleRef} className="opacity-0">
-          <span className="tag tag-accent max-w-full text-center leading-relaxed">
-            Aspiring Cybersecurity Analyst & Network Engineer
-          </span>
-        </div>
+      <div className="container-custom relative z-10 flex flex-col gap-8">
+        <div className="grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1fr)_clamp(260px,18vw,340px)] xl:items-center">
+          <div className="flex flex-col gap-8">
+            <div ref={roleRef} className="opacity-0">
+              <span className="tag tag-accent max-w-full text-center leading-relaxed">
+                Aspiring Cybersecurity Analyst & Network Engineer
+              </span>
+            </div>
 
-        <div ref={nameRef} className="opacity-0">
-          <h1 className="font-syne font-bold text-text-light leading-[0.9] tracking-tight">
-            <span className="block text-[clamp(3.5rem,12vw,11rem)]">
-              Kavisara
-            </span>
-            <span className="block text-[clamp(3rem,9vw,8rem)] text-accent">
-              Samarakoon
-            </span>
-          </h1>
+            <div ref={nameRef} className="opacity-0">
+              <h1 className="font-syne font-bold text-text-light leading-[0.9] tracking-tight">
+                <span className="block text-[clamp(3.5rem,12vw,11rem)]">
+                  Kavisara
+                </span>
+                <span className="block text-[clamp(3rem,9vw,8rem)] text-accent">
+                  Samarakoon
+                </span>
+              </h1>
+            </div>
+          </div>
+
+          <div
+            ref={imageRef}
+            className="opacity-0 hidden xl:block w-[clamp(260px,18vw,340px)] justify-self-end self-center pointer-events-none"
+          >
+            <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
+              <Image
+                src="/images/kavindu-profile.jpg"
+                alt="Kavisara Samarakoon"
+                width={900}
+                height={1200}
+                sizes="(min-width: 1280px) 18vw, 0px"
+                className="object-cover w-full h-auto"
+                priority
+              />
+              <div
+                className="absolute top-4 right-4 w-8 h-8 border-t border-r opacity-40"
+                style={{ borderColor: "var(--accent)" }}
+              />
+              <div
+                className="absolute bottom-4 left-4 w-8 h-8 border-b border-l opacity-40"
+                style={{ borderColor: "var(--accent)" }}
+              />
+            </div>
+          </div>
         </div>
 
         <div ref={lineRef} className="divider" style={{ scaleX: 0 }} />
@@ -209,31 +238,6 @@ export default function Hero() {
               </a>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div
-        ref={imageRef}
-        className="opacity-0 hidden xl:block absolute right-32 2xl:right-40 top-[26%] 2xl:top-[28%] w-[260px] 2xl:w-[320px] pointer-events-none"
-      >
-        <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
-          <Image
-            src="/images/kavindu-profile.jpg"
-            alt="Kavisara Samarakoon"
-            width={900}
-            height={1200}
-            sizes="(min-width: 1536px) 320px, (min-width: 1280px) 260px, 0px"
-            className="object-cover w-full h-auto"
-            priority
-          />
-          <div
-            className="absolute top-4 right-4 w-8 h-8 border-t border-r opacity-40"
-            style={{ borderColor: "var(--accent)" }}
-          />
-          <div
-            className="absolute bottom-4 left-4 w-8 h-8 border-b border-l opacity-40"
-            style={{ borderColor: "var(--accent)" }}
-          />
         </div>
       </div>
 
