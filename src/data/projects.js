@@ -203,6 +203,19 @@ export const projects = [
     result:
       "This project strengthened my understanding of practical network security and gave me hands-on experience with firewall-based protection, which is directly related to my cybersecurity and network engineering career path.",
     featured: true,
+    mainImage: "/images/projects/pfsense-firewall-lab/pfsense-main.png",
+    gallery: [
+      {
+        src: "/images/projects/pfsense-firewall-lab/pfsense-main.png",
+        alt: "pfSense firewall and network security lab validation overview",
+        caption: "pfSense Firewall & Network Security Lab — Overview",
+      },
+      {
+        src: "/images/projects/pfsense-firewall-lab/pfsense-lab-showcase.png",
+        alt: "pfSense firewall, IDS, and network segmentation lab showcase",
+        caption: "Lab Showcase — Firewall, IDS & Network Segmentation",
+      },
+    ],
   },
   {
     id: 3,

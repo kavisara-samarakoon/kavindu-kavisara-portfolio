@@ -745,6 +745,8 @@ const projectVisuals = {
   },
   "pfsense-firewall-lab": {
     gradient: "from-accent/15 via-accent/5 to-transparent",
+    imageSrc: "/images/projects/pfsense-firewall-lab/pfsense-main.png",
+    imageAlt: "pfSense firewall and network security lab portfolio showcase",
     overview: PfSenseOverview,
     architecture: PfSenseArchitecture,
     detail: PfSenseDetail,
