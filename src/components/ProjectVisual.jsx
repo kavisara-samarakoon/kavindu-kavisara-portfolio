@@ -746,13 +746,15 @@ const projectVisuals = {
   "pfsense-firewall-lab": {
     gradient: "from-accent/15 via-accent/5 to-transparent",
     imageSrc: "/images/projects/pfsense-firewall-lab/pfsense-main.png",
-    imageAlt: "pfSense firewall and network security lab portfolio showcase",
+    imageAlt: "Network Security Lab portfolio showcase with pfSense and documentation evidence",
     overview: PfSenseOverview,
     architecture: PfSenseArchitecture,
     detail: PfSenseDetail,
   },
   "freebsd-asterisk-voip": {
     gradient: "from-accent/15 via-accent/5 to-transparent",
+    imageSrc: "/images/projects/freebsd-asterisk-voip/freebsd-asterisk-showcase-1.png",
+    imageAlt: "FreeBSD and Asterisk VoIP lab documentation showcase",
     overview: VoipOverview,
     architecture: VoipArchitecture,
     detail: VoipDetail,

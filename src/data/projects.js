@@ -207,13 +207,18 @@ export const projects = [
     gallery: [
       {
         src: "/images/projects/pfsense-firewall-lab/pfsense-main.png",
-        alt: "pfSense firewall and network security lab validation overview",
-        caption: "pfSense Firewall & Network Security Lab — Overview",
+        alt: "Network Security Lab portfolio showcase with pfSense and cybersecurity lab documentation",
+        caption: "pfSense Firewall & Network Security Lab — Portfolio Showcase",
       },
       {
-        src: "/images/projects/pfsense-firewall-lab/pfsense-lab-showcase.png",
-        alt: "pfSense firewall, IDS, and network segmentation lab showcase",
-        caption: "Lab Showcase — Firewall, IDS & Network Segmentation",
+        src: "/images/projects/pfsense-firewall-lab/pfsense-readme-overview.png",
+        alt: "pfSense firewall and network security lab README overview",
+        caption: "README Overview — Project Summary & Documentation",
+      },
+      {
+        src: "/images/projects/pfsense-firewall-lab/pfsense-readme-evidence-tools.png",
+        alt: "pfSense lab evidence, tools and technologies, and repository structure screenshot",
+        caption: "Lab Evidence, Tools & Repository Structure",
       },
     ],
   },
@@ -252,6 +257,19 @@ export const projects = [
     result:
       "This project improved my understanding of VoIP systems, server configuration, and real network services. It is useful evidence for both network engineering and system administration skills.",
     featured: true,
+    mainImage: "/images/projects/freebsd-asterisk-voip/freebsd-asterisk-showcase-1.png",
+    gallery: [
+      {
+        src: "/images/projects/freebsd-asterisk-voip/freebsd-asterisk-showcase-1.png",
+        alt: "FreeBSD and Asterisk VoIP lab documentation showcase",
+        caption: "FreeBSD & Asterisk VoIP Lab — Documentation Showcase",
+      },
+      {
+        src: "/images/projects/freebsd-asterisk-voip/freebsd-asterisk-showcase-2.png",
+        alt: "FreeBSD and Asterisk VoIP lab repository and configuration evidence showcase",
+        caption: "Repository & Configuration Evidence",
+      },
+    ],
   },
   {
     id: 4,
