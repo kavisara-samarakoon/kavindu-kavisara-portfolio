@@ -111,7 +111,7 @@ export default function Hero() {
 
           <div
             ref={imageRef}
-            className="opacity-0 hidden xl:block w-[clamp(260px,18vw,340px)] justify-self-end self-center pointer-events-none"
+            className="opacity-0 hidden xl:block w-[clamp(260px,18vw,340px)] justify-self-end self-center xl:mt-3 pointer-events-none"
           >
             <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
               <Image
