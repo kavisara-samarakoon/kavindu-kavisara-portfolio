@@ -767,6 +767,8 @@ const projectVisuals = {
   },
   "personal-portfolio": {
     gradient: "from-accent/20 via-accent/5 to-transparent",
+    imageSrc: "/images/projects/personal-portfolio/portfolio-main.png",
+    imageAlt: "Personal portfolio website homepage hero section",
     overview: PortfolioOverview,
     architecture: PortfolioArchitecture,
     detail: PortfolioDetail,

@@ -346,6 +346,24 @@ export const projects = [
     result:
       "This project is being improved step by step. The goal is to make it professional enough for GitHub, LinkedIn, internship applications, and future deployment.",
     featured: false,
+    mainImage: "/images/projects/personal-portfolio/portfolio-main.png",
+    gallery: [
+      {
+        src: "/images/projects/personal-portfolio/portfolio-main.png",
+        alt: "Personal portfolio website homepage hero section",
+        caption: "Portfolio Homepage — Hero Section",
+      },
+      {
+        src: "/images/projects/personal-portfolio/portfolio-showcase-desktop.png",
+        alt: "Personal portfolio website multi-section desktop showcase",
+        caption: "Desktop Showcase — Multi-Section Layout",
+      },
+      {
+        src: "/images/projects/personal-portfolio/portfolio-showcase-mobile.png",
+        alt: "Personal portfolio website mobile responsive interface",
+        caption: "Mobile Responsive Interface",
+      },
+    ],
   },
 ];
 
