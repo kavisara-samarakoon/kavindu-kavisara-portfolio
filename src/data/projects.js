@@ -45,7 +45,7 @@ export const projects = [
       "SentinelLite AI reached its v1.0.0-beta public pre-release with 597 automated tests passing, full CI/CD validation on Python 3.11 and Python 3.14, cross-platform builds on macOS Apple Silicon and Ubuntu ARM64, SHA-256 checksums, and a clean GitHub pre-release. It demonstrates practical defensive security engineering concepts, detection pipeline design, and disciplined software release practices.",
     featured: true,
     ctaLabel: "Read Case Study",
-    mainImage: "/images/projects/sentinellite-ai/sentinellite-ai-validation-banner.png",
+    mainImage: "/images/projects/sentinellite-ai/cover.png",
     externalLinks: [
       {
         label: "GitHub Repository",
@@ -144,7 +144,7 @@ export const projects = [
     result:
       "This project is still in progress, but it is becoming one of my strongest portfolio projects because it shows both full-stack development ability and my interest in building scalable, practical systems.",
     featured: true,
-    mainImage: "/images/projects/nexora/nexora-main.png",
+    mainImage: "/images/projects/nexora/cover.png",
     gallery: [
       {
         src: "/images/projects/nexora/nexora-main.png",
@@ -203,7 +203,7 @@ export const projects = [
     result:
       "This project strengthened my understanding of practical network security and gave me hands-on experience with firewall-based protection, which is directly related to my cybersecurity and network engineering career path.",
     featured: true,
-    mainImage: "/images/projects/pfsense-firewall-lab/pfsense-main.png",
+    mainImage: "/images/projects/pfsense-firewall-lab/cover.png",
     gallery: [
       {
         src: "/images/projects/pfsense-firewall-lab/pfsense-main.png",
@@ -257,7 +257,7 @@ export const projects = [
     result:
       "This project improved my understanding of VoIP systems, server configuration, and real network services. It is useful evidence for both network engineering and system administration skills.",
     featured: true,
-    mainImage: "/images/projects/freebsd-asterisk-voip/freebsd-asterisk-showcase-1.png",
+    mainImage: "/images/projects/freebsd-asterisk-voip/cover.png",
     gallery: [
       {
         src: "/images/projects/freebsd-asterisk-voip/freebsd-asterisk-showcase-1.png",
@@ -317,6 +317,7 @@ export const projects = [
     result:
       "This project is stronger than a basic student management system because it shows real full-stack application features such as authentication, matching, request workflows, database-backed logic, API testing, and real-time communication.",
     featured: false,
+    mainImage: "/images/projects/unimatelk/cover.png",
   },
   {
     id: 5,
@@ -346,7 +347,7 @@ export const projects = [
     result:
       "This project is being improved step by step. The goal is to make it professional enough for GitHub, LinkedIn, internship applications, and future deployment.",
     featured: false,
-    mainImage: "/images/projects/personal-portfolio/portfolio-main.png",
+    mainImage: "/images/projects/personal-portfolio/cover.png",
     gallery: [
       {
         src: "/images/projects/personal-portfolio/portfolio-main.png",
