@@ -33,3 +33,6 @@ Thumbs.db
 # TypeScript (not used here but just in case)
 *.tsbuildinfo
 next-env.d.ts
+
+# Local agent metadata
+.ghost/

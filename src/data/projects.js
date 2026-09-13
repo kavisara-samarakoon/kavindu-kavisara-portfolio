@@ -219,6 +219,111 @@ export const projects = [
     ],
   },
   {
+    id: 8,
+    slug: "ghost",
+    title: "GHOST",
+    type: "Local-first Workflow Assistant",
+    context: "Personal Software Product",
+    status: "Public Alpha",
+    year: "2026",
+    shortDescription:
+      "A secure desktop + CLI workflow assistant for organizing project sessions, memory, handoffs, outputs, and artifacts with a safety-first local architecture.",
+    overview:
+      "GHOST (GitHub, Handoff, Operations, Search, and Tracking) is a secure local-first workflow assistant I built to manage project continuity across my development work. It combines a Python CLI workflow engine with a Tauri-based macOS desktop cockpit, allowing projects, sessions, notes, outputs, handoffs, memory, and generated artifacts to stay organized locally.",
+    detailedDescription:
+      "The current public release, v0.3.0-alpha, focuses on the Local MVP Desktop Checkpoint. It includes a polished desktop interface with Command, Projects, Sessions, Memory, and Artifacts pages, plus safe Open/Reveal actions for approved local artifacts. The CLI handles controlled workflow creation, including project registration, session tracking, context packs, handoff drafts, next-step drafts, and update packs. A key design goal of GHOST is safety — the desktop does not run shell commands, execute the CLI, call AI APIs, use network services, or perform GitHub/release actions automatically. The latest main branch introduces a Safe Desktop Action Request Bridge, where the desktop can prepare reviewed local action requests without directly mutating workflow state.",
+    challenge:
+      "The main challenge was building a workflow tool that keeps project data local and structured while maintaining strict safety boundaries. The desktop cockpit needed to surface workflow information without automatically executing risky actions. Coordinating the Python CLI engine with the Rust/Tauri desktop required careful architecture to keep the write path explicit and controlled.",
+    myRole:
+      "I designed, developed, tested, validated, and released the entire project independently — including the CLI workflow engine, Tauri desktop cockpit, React UI, safety model, project/session/memory architecture, GitHub Actions CI, and the public v0.3.0-alpha release.",
+    tech: [
+      "Tauri",
+      "React",
+      "TypeScript",
+      "Rust",
+      "Python",
+      "Vite",
+      "macOS",
+      "Local-first",
+      "Workflow",
+      "GitHub Actions",
+    ],
+    features: [
+      "Local-first desktop + CLI workflow system",
+      "macOS desktop Command Space cockpit",
+      "Projects, Sessions, Memory, and Artifacts pages",
+      "Safe project/session tracking",
+      "Explicit-submit local memory search",
+      "Context packs and AI handoff drafts",
+      "Update pack generation",
+      "Memory and artifact review cockpit",
+      "Safe Open / Reveal actions for approved artifacts",
+      "Python CLI workflow engine",
+      "Desktop action request bridge on latest main branch",
+      "GitHub Actions CI and public release workflow",
+    ],
+    result:
+      "GHOST reached its v0.3.0-alpha public release as a Local MVP Desktop Checkpoint with a working desktop cockpit, CLI workflow engine, safe action model, and structured project/session/memory architecture. It demonstrates secure local-first software design, desktop application development with Tauri, workflow automation architecture, and disciplined release engineering. The project is moving toward v0.4.0-alpha with planned features including safe desktop action request review and approval, confirmed desktop write actions, AI-assisted project context suggestions, and GitHub/developer workflow integrations.",
+    featured: true,
+    ctaLabel: "Read Case Study",
+    mainImage: "/images/projects/ghost/cover.png",
+    externalLinks: [
+      {
+        label: "GitHub Repository",
+        href: "https://github.com/kavisara-samarakoon/ghost",
+      },
+      {
+        label: "v0.3.0-alpha Release",
+        href: "https://github.com/kavisara-samarakoon/ghost/releases/tag/v0.3.0-alpha",
+      },
+    ],
+    validation: [
+      "v0.3.0-alpha public release published",
+      "Desktop cockpit builds and launches on macOS",
+      "CLI workflow engine functional",
+      "GitHub Actions CI passed",
+      "Safe action model enforced",
+      "Desktop does not execute shell commands or CLI",
+      "Desktop does not call AI APIs or network services",
+      "Latest main includes Safe Desktop Action Request Bridge (M29)",
+    ],
+    distribution: {
+      status: "v0.3.0-alpha • Public GitHub Release",
+      note: "Local MVP Desktop Checkpoint. macOS app is unsigned and not notarized. Install from GitHub release artifacts.",
+    },
+    safetyBoundaries: [
+      "GHOST is a public alpha and local MVP, not production-ready. The desktop does not run shell commands, invoke the Python CLI, call AI APIs, call network services, or automatically publish, deploy, merge, push, tag, or release. CLI remains the controlled write path. Users must review generated drafts before sharing. Users should not store secrets in GHOST notes, requests, or outputs.",
+    ],
+    limitations: [
+      "Public alpha — not production-ready",
+      "macOS app is unsigned and not notarized",
+      "Desktop does not run shell commands",
+      "Desktop does not invoke the Python CLI directly",
+      "Desktop does not call AI APIs or network services",
+      "Does not automatically publish, deploy, merge, push, tag, or release",
+      "AI-assisted workflows are planned roadmap, not yet implemented",
+      "Voice-command workflow control is planned roadmap, not yet implemented",
+      "Users should not store secrets in GHOST notes or outputs",
+    ],
+    gallery: [
+      {
+        src: "/images/projects/ghost/ghost-workflow.png",
+        alt: "GHOST local-first workflow assistant architecture and workflow overview",
+        caption: "Local-first Workflow Assistant Overview",
+      },
+      {
+        src: "/images/projects/ghost/ghost-inside.png",
+        alt: "Inside GHOST — desktop cockpit interface with Command, Projects, Sessions, and Memory pages",
+        caption: "Inside GHOST — Desktop Cockpit",
+      },
+      {
+        src: "/images/projects/ghost/ghost-safe-local-first.png",
+        alt: "GHOST safe local-first architecture — no shell execution, no AI API calls, no automatic actions",
+        caption: "Safe Local-first Architecture",
+      },
+    ],
+  },
+  {
     id: 1,
     slug: "nexora",
     title: "NEXORA",
