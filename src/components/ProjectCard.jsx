@@ -15,10 +15,10 @@ export default function ProjectCard({ project, index = 0 }) {
         delay: index * 0.1,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative"
+      className="group relative h-full"
     >
-      <Link href={`/work/${project.slug}`} className="block">
-        <div className="flex flex-col gap-6 p-6 md:p-8 border border-border hover:border-accent/30 rounded-sm transition-all duration-500 bg-border/20 hover:bg-border/40">
+      <Link href={`/work/${project.slug}`} className="block h-full">
+        <div className="flex h-full flex-col gap-4 p-5 md:p-6 border border-border hover:border-accent/30 rounded-sm transition-all duration-500 bg-border/20 hover:bg-border/40">
           <div className="flex items-center justify-between">
             <span className="font-syne font-bold text-muted text-sm">
               {String(index + 1).padStart(2, "0")}
@@ -34,7 +34,7 @@ export default function ProjectCard({ project, index = 0 }) {
 
           <ProjectVisual
             slug={project.slug}
-            className="w-full h-48 md:h-56"
+            className="w-full h-40 md:h-48"
             animated={false}
           />
 
@@ -58,7 +58,7 @@ export default function ProjectCard({ project, index = 0 }) {
             )}
           </div>
 
-          <div className="flex items-center gap-2 text-accent font-dm text-sm font-medium group/link">
+          <div className="flex items-center gap-2 text-accent font-dm text-sm font-medium group/link mt-auto pt-2">
             <span>{project.ctaLabel || "View Project"}</span>
             <svg
               className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
