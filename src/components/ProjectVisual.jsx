@@ -740,6 +740,11 @@ const projectVisuals = {
     imageSrc: "/images/projects/arm-secnet/cover.png",
     imageAlt: "ARM-SecNet ARM64 defensive cybersecurity lab framework cover",
   },
+  ghost: {
+    gradient: "from-accent/15 via-accent/5 to-transparent",
+    imageSrc: "/images/projects/ghost/cover.png",
+    imageAlt: "GHOST local-first workflow assistant desktop cockpit cover",
+  },
   nexora: {
     gradient: "from-accent/15 via-accent/5 to-transparent",
     imageSrc: "/images/projects/nexora/cover.png",
