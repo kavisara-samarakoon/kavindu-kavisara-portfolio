@@ -24,6 +24,18 @@ const githubProjects = [
     href: "https://github.com/kavisara-samarakoon/arm-secnet",
   },
   {
+    title: "GHOST",
+    repo: "ghost",
+    description:
+      "Local-first desktop + CLI workflow assistant for organizing project sessions, memory, handoffs, outputs, and artifacts with a safety-first architecture.",
+    status: "Public Alpha",
+    statusAccent: true,
+    pills: ["Tauri", "React", "TypeScript", "Rust", "Python"],
+    highlight:
+      "Secure local workflow cockpit with review-first project context, memory, and artifact management.",
+    href: "https://github.com/kavisara-samarakoon/ghost",
+  },
+  {
     title: "Personal Portfolio",
     repo: "kavindu-kavisara-portfolio",
     description:
@@ -34,18 +46,6 @@ const githubProjects = [
     highlight:
       "Modern dark UI, responsive layout, project case studies, and polished deployment workflow.",
     href: "https://github.com/kavisara-samarakoon/kavindu-kavisara-portfolio",
-  },
-  {
-    title: "NEXORA",
-    repo: "nexora",
-    description:
-      "Game deals and giveaways platform concept with wishlist alerts, deal discovery, and full-stack product architecture.",
-    status: "Private MVP",
-    statusAccent: false,
-    pills: ["Next.js", "TypeScript", "Spring Boot", "PostgreSQL", "Product UI"],
-    highlight:
-      "Full-stack product direction with clean UI, deal tracking concepts, and scalable roadmap.",
-    href: null,
   },
 ];
 
