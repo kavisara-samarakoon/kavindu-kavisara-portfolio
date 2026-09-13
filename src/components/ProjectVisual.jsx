@@ -735,6 +735,11 @@ const projectVisuals = {
     imageSrc: "/images/projects/sentinellite-ai/cover.png",
     imageAlt: "SentinelLite AI defensive Linux endpoint observation CLI cover",
   },
+  "arm-secnet": {
+    gradient: "from-accent/15 via-accent/5 to-transparent",
+    imageSrc: "/images/projects/arm-secnet/cover.png",
+    imageAlt: "ARM-SecNet ARM64 defensive cybersecurity lab framework cover",
+  },
   nexora: {
     gradient: "from-accent/15 via-accent/5 to-transparent",
     imageSrc: "/images/projects/nexora/cover.png",
