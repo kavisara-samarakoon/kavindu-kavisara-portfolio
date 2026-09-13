@@ -110,6 +110,106 @@ export const projects = [
     ],
   },
   {
+    id: 7,
+    slug: "arm-secnet",
+    title: "ARM-SecNet",
+    type: "Cybersecurity Lab Framework",
+    context: "Cybersecurity Project",
+    status: "V1.1.0 Release",
+    year: "2026",
+    shortDescription:
+      "An ARM64-first defensive cybersecurity lab framework for Apple Silicon learners, focused on UTM-based Linux lab setup, safe defensive exercises, evidence documentation, and validation checks.",
+    overview:
+      "ARM-SecNet is a public ARM64-first defensive cybersecurity lab framework for Apple Silicon users, providing UTM-based Linux lab setup, defensive exercises, screenshot-backed evidence, and validation workflows. The V1.1.0 release expands the framework with a SentinelLite AI Local CLI and Static Dashboard lab while preserving its defensive-only education scope.",
+    detailedDescription:
+      "ARM-SecNet is a public ARM64-first defensive cybersecurity lab framework for Apple Silicon users, providing UTM-based Linux lab setup, defensive exercises, screenshot-backed evidence, and validation workflows. The V1.1.0 release expands the framework with a SentinelLite AI Local CLI and Static Dashboard lab while preserving its defensive-only education scope.",
+    challenge:
+      "The main challenge was designing a structured lab framework that works reliably on ARM64 Apple Silicon hardware using UTM virtualization, while ensuring every lab exercise produces verifiable screenshot-backed evidence and passes automated validation checks. The framework needed to remain strictly defensive in scope and provide clear documentation for each lab workflow.",
+    myRole:
+      "I designed, developed, documented, validated, and released the entire project independently — including the lab framework structure, UTM-based VM workflow, defensive lab exercises, screenshot evidence process, validation scripts, GitHub Actions CI, and the public V1.1.0 release.",
+    tech: [
+      "ARM64",
+      "Apple Silicon",
+      "UTM",
+      "Ubuntu ARM64",
+      "Linux",
+      "Cybersecurity",
+      "Defensive Labs",
+      "Documentation",
+      "Validation",
+    ],
+    features: [
+      "ARM64-first lab setup for Apple Silicon learners",
+      "UTM-based Ubuntu ARM64 VM workflow",
+      "Three documented defensive labs",
+      "Screenshot-backed evidence process",
+      "Local validation script with 29 passed checks",
+      "GitHub Actions validation workflow",
+      "Optional SentinelLite AI Local CLI and Static Dashboard lab",
+      "Defensive-only education and documentation scope",
+    ],
+    result:
+      "ARM-SecNet reached its V1.1.0 public release with 29 validation checks passing, zero warnings, zero failures, a clean GitHub Actions CI run, and three fully documented defensive labs. It demonstrates practical ARM64 defensive cybersecurity lab design, structured evidence documentation, and disciplined validation practices for Apple Silicon learners.",
+    featured: true,
+    ctaLabel: "Read Case Study",
+    mainImage: "/images/projects/arm-secnet/cover.png",
+    externalLinks: [
+      {
+        label: "GitHub Repository",
+        href: "https://github.com/kavisara-samarakoon/arm-secnet",
+      },
+      {
+        label: "V1.1.0 Release",
+        href: "https://github.com/kavisara-samarakoon/arm-secnet/releases/tag/v1.1.0-sentinellite-dashboard-lab",
+      },
+    ],
+    validation: [
+      "29 validation checks passed",
+      "0 warnings, 0 failures",
+      "git diff --check passed",
+      "GitHub Actions ARM-SecNet Validation CI passed",
+      "Lab 01 — Linux Baseline Investigation documented",
+      "Lab 02 — Authentication Log Analysis documented",
+      "Lab 03 — SentinelLite AI Local CLI and Static Dashboard documented",
+      "Screenshot-backed evidence verified",
+    ],
+    distribution: {
+      status: "V1.1.0 • Public GitHub Release",
+      note: "ARM-SecNet V1.1.0 SentinelLite Dashboard Lab — public release on GitHub.",
+    },
+    safetyBoundaries: [
+      "Defensive-only, education-focused, ARM64 Apple Silicon lab framework — not a production security product",
+      "The V1.1.0 Lab 03 evidence was recorded on one Ubuntu 26.04 LTS aarch64 VM using a specific SentinelLite source commit. The existing screenshots do not validate the exact SentinelLite v1.2.0-beta wheel. Future exact-release VM validation should be recorded separately.",
+    ],
+    limitations: [
+      "Not a production EDR, antivirus, malware remover, SIEM, or SOC platform",
+      "Not real AI/LLM-powered",
+      "Not a public scanner or offensive toolkit",
+      "Not an automatic remediation system",
+      "Not a universal ARM64 compatibility proof",
+      "Does not provide enterprise-grade security monitoring",
+      "Does not perform active network scanning or probing",
+      "Does not send packets or exploit systems",
+    ],
+    gallery: [
+      {
+        src: "/images/projects/arm-secnet/arm-secnet-v110-overview.png",
+        alt: "ARM-SecNet V1.1.0 SentinelLite Dashboard Lab overview",
+        caption: "V1.1.0 Release Overview",
+      },
+      {
+        src: "/images/projects/arm-secnet/arm-secnet-lab-workflow.png",
+        alt: "ARM-SecNet ARM64 defensive lab workflow on Apple Silicon",
+        caption: "Lab Workflow — UTM to Validation",
+      },
+      {
+        src: "/images/projects/arm-secnet/arm-secnet-validation-summary.png",
+        alt: "ARM-SecNet validation summary — 29 passed, 0 warnings, 0 failures",
+        caption: "Validation Summary — 29 Passed",
+      },
+    ],
+  },
+  {
     id: 1,
     slug: "nexora",
     title: "NEXORA",
