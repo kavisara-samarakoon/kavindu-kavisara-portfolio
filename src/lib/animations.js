@@ -1,3 +1,30 @@
+import gsap from "gsap";
+
+// Each owner restores its own styles and removes its own preference listener.
+export function createMotionContext(scope, animate, showReducedMotion) {
+  const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let context;
+
+  const update = () => {
+    context?.revert();
+    context = gsap.context(() => {
+      if (preference.matches) {
+        showReducedMotion();
+      } else {
+        animate();
+      }
+    }, scope);
+  };
+
+  update();
+  preference.addEventListener("change", update);
+
+  return () => {
+    preference.removeEventListener("change", update);
+    context.revert();
+  };
+}
+
 export const fadeUpVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: {

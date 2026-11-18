@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services } from "@/data/services";
 import Reveal from "./Reveal";
+import { createMotionContext } from "@/lib/animations";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -50,26 +51,26 @@ function ServiceRow({ service, index }) {
 
     const el = rowRef.current;
 
-    const tween = gsap.fromTo(
-      el,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        delay: index * 0.05,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-
-    return () => {
-      tween.kill();
-    };
+    return createMotionContext(rowRef, () => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: index * 0.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, () => {
+      gsap.set(el, { opacity: 1, y: 0 });
+    });
   }, [index]);
 
   return (

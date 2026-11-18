@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
+import { createMotionContext } from "@/lib/animations";
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -16,7 +17,7 @@ export default function Hero() {
   const scrollIndicatorRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    return createMotionContext(heroRef, () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
@@ -60,9 +61,17 @@ export default function Hero() {
           { opacity: 1, duration: 0.6 },
           "-=0.2"
         );
-    }, heroRef);
-
-    return () => ctx.revert();
+    }, () => {
+      gsap.set([
+        nameRef.current,
+        roleRef.current,
+        descRef.current,
+        ctaRef.current,
+        imageRef.current,
+      ], { opacity: 1, y: 0 });
+      gsap.set(scrollIndicatorRef.current, { opacity: 1 });
+      gsap.set(lineRef.current, { scaleX: 1 });
+    });
   }, []);
 
   return (

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { createMotionContext } from "@/lib/animations";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -21,32 +22,31 @@ export default function Reveal({
   useEffect(() => {
     if (!ref.current) return;
 
-    const fromVars = { opacity: 0 };
-    if (direction === "up") fromVars.y = distance;
-    if (direction === "down") fromVars.y = -distance;
-    if (direction === "left") fromVars.x = distance;
-    if (direction === "right") fromVars.x = -distance;
+    return createMotionContext(ref, () => {
+      const fromVars = { opacity: 0 };
+      if (direction === "up") fromVars.y = distance;
+      if (direction === "down") fromVars.y = -distance;
+      if (direction === "left") fromVars.x = distance;
+      if (direction === "right") fromVars.x = -distance;
 
-    const toVars = {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      duration,
-      delay,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ref.current,
-        start: "top 88%",   // Trigger when element is 88% from top of viewport
-        toggleActions: "play none none none",
-      },
-    };
+      const toVars = {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        duration,
+        delay,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top 88%",   // Trigger when element is 88% from top of viewport
+          toggleActions: "play none none none",
+        },
+      };
 
-    const tween = gsap.fromTo(ref.current, fromVars, toVars);
-
-    return () => {
-      tween.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+      gsap.fromTo(ref.current, fromVars, toVars);
+    }, () => {
+      gsap.set(ref.current, { opacity: 1, x: 0, y: 0 });
+    });
   }, [direction, distance, duration, delay]);
 
   return (
