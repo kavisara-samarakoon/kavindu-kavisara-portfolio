@@ -816,6 +816,7 @@ export default function ProjectVisual({
   className = "",
   animated = true,
   variant = "overview",
+  sizes = "(max-width: 768px) 100vw, 50vw",
 }) {
   const config = projectVisuals[slug];
   const gradient = config?.gradient || "from-accent/20 via-accent/5 to-transparent";
@@ -829,7 +830,7 @@ export default function ProjectVisual({
           alt={config.imageAlt || "Project screenshot"}
           fill
           className="object-contain p-2"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes={sizes}
         />
       </VisualFrame>
     );
