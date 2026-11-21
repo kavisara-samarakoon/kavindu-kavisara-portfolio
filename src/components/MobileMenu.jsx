@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import DownloadCvLink from "./DownloadCvLink";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -28,7 +29,7 @@ const itemVariants = {
   },
 };
 
-export default function MobileMenu({ isOpen, onClose }) {
+export default function MobileMenu({ isOpen, onClose, onDownload }) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -37,7 +38,8 @@ export default function MobileMenu({ isOpen, onClose }) {
           animate={{ x: "0%" }}
           exit={{ x: "100%" }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-40 bg-bg-dark flex flex-col px-6 pt-24 pb-12"
+          className="fixed inset-0 z-40 bg-bg-dark flex flex-col gap-6 overflow-y-auto px-6 pt-24 pb-12 md:hidden"
+          data-lenis-prevent
         >
           <motion.ul
             variants={containerVariants}
@@ -57,6 +59,12 @@ export default function MobileMenu({ isOpen, onClose }) {
                 </Link>
               </motion.li>
             ))}
+            <li className="mt-4">
+              <DownloadCvLink
+                className="inline-flex min-h-11 touch-manipulation"
+                onClick={onDownload}
+              />
+            </li>
           </motion.ul>
 
           <motion.div

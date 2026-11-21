@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import DownloadCvLink from "./DownloadCvLink";
 import MobileMenu from "./MobileMenu";
 
 const navLinks = [
@@ -15,6 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef(null);
   const pathname = usePathname();
   const [menuPathname, setMenuPathname] = useState(pathname);
 
@@ -43,10 +45,10 @@ export default function Navbar() {
           }`}
       >
         <div className="container-custom">
-          <nav className="flex items-center justify-between h-16 md:h-20">
+          <nav className="flex items-center justify-between h-16 md:h-20 lg:grid lg:grid-cols-[1fr_auto_1fr]">
             <Link
               href="/"
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3 group lg:justify-self-start"
               aria-label="Home"
             >
               <div className="relative w-10 h-10 md:w-11 md:h-11 bg-accent rounded-xl border border-accent/60 flex items-center justify-center shadow-[0_0_24px_rgba(204,255,0,0.12)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_32px_rgba(204,255,0,0.2)]">
@@ -87,17 +89,20 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 lg:justify-self-end lg:gap-4">
+              <DownloadCvLink className="hidden py-2 md:inline-flex" />
+
               <a
                 href="mailto:kavisaraksamarakoon@gmail.com"
-                className="hidden md:inline-flex items-center gap-2 px-5 py-2 border border-accent text-accent font-dm text-sm font-medium rounded-full hover:bg-accent hover:text-text-dark transition-all duration-300"
+                className="hidden md:inline-flex items-center gap-2 whitespace-nowrap px-5 py-2 border border-accent text-accent font-dm text-sm font-medium rounded-full hover:bg-accent hover:text-text-dark transition-all duration-300"
               >
                 Let&apos;s Talk
               </a>
 
               <button
+                ref={menuButtonRef}
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none group"
+                className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent group"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
               >
@@ -119,7 +124,14 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu
+        isOpen={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        onDownload={() => {
+          setMenuOpen(false);
+          menuButtonRef.current?.focus({ preventScroll: true });
+        }}
+      />
     </>
   );
 }
