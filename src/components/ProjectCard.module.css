@@ -1,24 +1,21 @@
 .card {
   --card-padding: clamp(1rem, 2vw, 1.375rem);
+  --card-surface: linear-gradient(160deg, var(--border), var(--bg-dark) 76%);
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto 1fr auto;
   min-width: 0;
-  background: linear-gradient(160deg, var(--border), var(--bg-dark) 76%);
+  background: var(--card-surface);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   touch-action: manipulation;
 }
 
-.card::after {
-  position: absolute;
-  inset: -1px;
-  border: 1px solid var(--accent);
-  border-radius: inherit;
-  opacity: 0;
-  pointer-events: none;
-  content: "";
+.rotor,
+.front,
+.back {
+  display: contents;
 }
 
 .card:focus-visible {
@@ -121,7 +118,8 @@
   list-style: none;
 }
 
-.action {
+.action,
+.affordance {
   display: flex;
   grid-area: 4 / 1;
   align-items: center;
@@ -135,22 +133,67 @@
   font-weight: 600;
 }
 
+.affordance,
+.backTitle {
+  display: none;
+}
+
 .arrow {
   flex: none;
 }
 
-@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) and (not (any-pointer: coarse)) and (prefers-reduced-motion: no-preference) {
   .card {
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr;
+    border-color: transparent;
+    background: none;
+    perspective: 1600px;
   }
 
-  /* Both faces size the same grid cell, so any description can wrap in full. */
+  .rotor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    transition: transform 560ms cubic-bezier(0.4, 0, 0.6, 1);
+    pointer-events: none;
+  }
+
+  /* Both faces contribute to a single grid cell and can size it intrinsically. */
+  .front,
+  .back {
+    display: grid;
+    grid-area: 1 / 1;
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 0.7rem;
+    outline: 1px solid var(--border);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .front {
+    grid-template-rows: auto 1fr auto;
+    background: var(--card-surface);
+    transform: rotateY(0deg);
+  }
+
+  .back {
+    grid-template-rows: 1fr auto;
+    outline-color: var(--accent);
+    background: linear-gradient(150deg, var(--border), var(--bg-dark) 68%);
+    transform: rotateY(180deg);
+  }
+
+  .backTitle {
+    display: block;
+    font-family: var(--font-syne);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
   .details {
     grid-area: 1 / 1;
-    position: relative;
-    padding: var(--card-padding);
-    border-radius: 0.7rem 0.7rem 0 0;
-    background: linear-gradient(155deg, rgb(8 8 8 / 95%), rgb(8 8 8 / 82%));
+    padding: var(--card-padding) var(--card-padding) 0;
   }
 
   .technologies li {
@@ -158,51 +201,20 @@
   }
 
   .action {
+    grid-area: 2 / 1;
+  }
+
+  .affordance {
+    display: flex;
     grid-area: 3 / 1;
   }
-}
 
-@media (min-width: 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .card::after {
-    transition: opacity 180ms ease-out;
+  .card:hover .rotor,
+  .card:focus-visible .rotor {
+    transform: rotateY(180deg);
   }
 
-  .cover .image {
-    transition: opacity 180ms ease-out, transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .details {
-    opacity: 0;
-    transition: opacity 180ms ease-out;
-  }
-
-  .arrow {
-    transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .card:hover::after,
-  .card:focus-visible::after {
-    opacity: 0.55;
-  }
-
-  .card:hover .details,
-  .card:focus-visible .details {
-    opacity: 1;
-  }
-
-  .card:hover:not(:focus-visible) .image {
-    opacity: 0.72;
-    transform: scale(0.975);
-  }
-
-  .card:hover:not(:focus-visible) .arrow {
-    transform: translateX(3px);
-  }
-
-  .card:focus-visible::after,
-  .card:focus-visible .details,
-  .card:focus-visible .image,
-  .card:focus-visible .arrow {
+  .card:focus-visible .rotor {
     transition: none;
   }
 }
