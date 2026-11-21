@@ -82,15 +82,15 @@ function ServiceRow({ service, index }) {
         {service.number}
       </span>
 
-      <h3 className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300 w-full md:w-64 shrink-0">
+      <h3 className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300 w-full md:w-1/4 lg:w-64 shrink-0">
         {service.title}
       </h3>
 
-      <p className="font-dm text-muted text-sm md:text-base leading-relaxed flex-1">
+      <p className="font-dm text-muted text-sm md:text-base leading-relaxed min-w-0 break-words flex-1">
         {service.description}
       </p>
 
-      <div className="flex flex-wrap gap-2 md:justify-end md:w-64 shrink-0">
+      <div className="flex flex-wrap gap-2 md:justify-end md:w-1/4 lg:w-64 shrink-0">
         {service.tags.map((tag) => (
           <span key={tag} className="tag text-xs">
             {tag}
