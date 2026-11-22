@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import Image from "next/image";
 import { getProjectBySlug, getAllProjectSlugs, projects } from "@/data/projects";
 import Reveal from "@/components/Reveal";
@@ -102,11 +103,13 @@ function ProjectHero({ project }) {
           </div>
         </Reveal>
 
-        <Reveal direction="up" delay={0.1}>
-          <h1 className="font-syne font-bold text-text-light text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-8">
-            {project.title}
-          </h1>
-        </Reveal>
+        <div>
+          <ViewTransition name={`project-title-${project.slug}`} default="none" share="portfolio-project-title">
+            <h1 className="w-fit font-syne font-bold text-text-light text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-8">
+              {project.title}
+            </h1>
+          </ViewTransition>
+        </div>
 
         <Reveal direction="up" delay={0.15}>
           <p className="font-dm text-muted text-base md:text-xl max-w-2xl leading-relaxed">

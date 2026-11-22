@@ -1,6 +1,8 @@
 import "./globals.css";
+import "./view-transitions.css";
 import { Syne, DM_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import RouteTransition from "@/components/RouteTransition";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const syne = Syne({
@@ -58,10 +60,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${syne.variable} ${dmSans.variable}`} style={{ viewTransitionName: "root" }}>
       <body className="bg-bg-dark text-text-light font-dm antialiased">
         <SmoothScroll>
           <Navbar />
+          <RouteTransition />
           <main>{children}</main>
         </SmoothScroll>
       </body>

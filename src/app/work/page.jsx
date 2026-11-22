@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ViewTransition } from "react";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
@@ -109,9 +110,11 @@ function ProjectRow({ project, index }) {
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-4 mb-3">
-            <h2 className="font-syne font-bold text-text-light text-2xl lg:text-3xl group-hover:text-accent transition-colors duration-300">
-              {project.title}
-            </h2>
+            <ViewTransition name={`project-title-${project.slug}`} default="none" share="portfolio-project-title">
+              <h2 className="font-syne font-bold text-text-light text-2xl lg:text-3xl group-hover:text-accent transition-colors duration-300">
+                {project.title}
+              </h2>
+            </ViewTransition>
             {project.featured && (
               <span className="tag tag-accent text-xs shrink-0">Featured</span>
             )}
