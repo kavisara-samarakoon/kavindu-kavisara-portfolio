@@ -1,6 +1,9 @@
+"use client";
+
 import { useId } from "react";
 import Link from "next/link";
 import ProjectVisual from "./ProjectVisual";
+import { ProjectTitleTransition, projectTitleType, useProjectCardRotation } from "./ProjectTransitions";
 import styles from "./ProjectCard.module.css";
 
 const coverSizes = [
@@ -10,8 +13,9 @@ const coverSizes = [
   "calc(100vw - 3rem)",
 ].join(", ");
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, compactList = false }) {
   const id = useId();
+  const rotates = useProjectCardRotation();
   const titleId = `${id}-title`;
   const descriptionId = `${id}-description`;
   const actionId = `${id}-action`;
@@ -21,6 +25,7 @@ export default function ProjectCard({ project }) {
   return (
     <Link
       href={`/work/${project.slug}`}
+      transitionTypes={compactList || !rotates ? [projectTitleType(project.slug)] : undefined}
       aria-labelledby={`${titleId} ${actionId}`}
       aria-describedby={descriptionId}
       className={styles.card}
@@ -41,7 +46,9 @@ export default function ProjectCard({ project }) {
               <span>{project.context}</span>
               <span>{project.year}</span>
             </div>
-            <h3 id={titleId} className={styles.title}>{project.title}</h3>
+            <ProjectTitleTransition slug={project.slug} layout={compactList ? "compact" : undefined}>
+              <h3 id={titleId} className={styles.title}>{project.title}</h3>
+            </ProjectTitleTransition>
             <span className={styles.status}>{project.status}</span>
           </div>
 

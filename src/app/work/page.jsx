@@ -1,11 +1,10 @@
-import Link from "next/link";
-import { ViewTransition } from "react";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import ProjectVisual from "@/components/ProjectVisual";
+import { ProjectPreviewLink, ProjectTitleTransition } from "@/components/ProjectTransitions";
 import GitHubHighlights from "@/components/GitHubHighlights";
 
 export const metadata = {
@@ -88,8 +87,8 @@ function ProjectsList() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:hidden">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} compactList />
           ))}
         </div>
       </div>
@@ -100,8 +99,9 @@ function ProjectsList() {
 function ProjectRow({ project, index }) {
   return (
     <Reveal direction="up" delay={index * 0.07}>
-      <Link
+      <ProjectPreviewLink
         href={`/work/${project.slug}`}
+        slug={project.slug}
         className="group flex items-start gap-8 py-10 border-b border-border hover:border-accent/30 transition-colors duration-500"
       >
         <span className="font-syne font-bold text-muted text-sm w-10 shrink-0 mt-1">
@@ -110,11 +110,11 @@ function ProjectRow({ project, index }) {
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-4 mb-3">
-            <ViewTransition name={`project-title-${project.slug}`} default="none" share="portfolio-project-title">
+            <ProjectTitleTransition slug={project.slug} layout="desktop">
               <h2 className="font-syne font-bold text-text-light text-2xl lg:text-3xl group-hover:text-accent transition-colors duration-300">
                 {project.title}
               </h2>
-            </ViewTransition>
+            </ProjectTitleTransition>
             {project.featured && (
               <span className="tag tag-accent text-xs shrink-0">Featured</span>
             )}
@@ -141,11 +141,12 @@ function ProjectRow({ project, index }) {
           <span className="font-dm text-muted text-xs">{project.year}</span>
         </div>
 
-        <div className="w-32 h-24 overflow-hidden rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 shrink-0">
+        <div className="w-32 h-24 overflow-hidden rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 shrink-0 group-hover:transition-none group-focus-visible:opacity-100 group-focus-visible:transition-none">
           <ProjectVisual
             slug={project.slug}
             className="w-full h-full"
             animated={false}
+            shareCover={Boolean(project.mainImage)}
           />
         </div>
 
@@ -165,7 +166,7 @@ function ProjectRow({ project, index }) {
             />
           </svg>
         </div>
-      </Link>
+      </ProjectPreviewLink>
     </Reveal>
   );
 }

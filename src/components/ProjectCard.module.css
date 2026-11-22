@@ -149,6 +149,10 @@
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) and (not (any-pointer: coarse)) and (prefers-reduced-motion: no-preference) {
+  .summary .title {
+    view-transition-name: none !important;
+  }
+
   .card {
     grid-template-rows: 1fr;
     border-color: transparent;

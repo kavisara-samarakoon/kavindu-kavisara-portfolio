@@ -1,5 +1,6 @@
 "use client";
 
+import { ViewTransition } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
@@ -821,21 +822,39 @@ export default function ProjectVisual({
   animated = true,
   variant = "overview",
   sizes = "(max-width: 768px) 100vw, 50vw",
+  shareCover = false,
 }) {
   const config = projectVisuals[slug];
   const gradient = config?.gradient || "from-accent/20 via-accent/5 to-transparent";
 
-  // Image-based visual (used by SentinelLite AI)
   if (config?.imageSrc) {
+    const coverName = `project-cover-${slug}`;
+    // Both shared snapshots use the same optimized image candidate.
+    const image = (
+      <Image
+        src={config.imageSrc}
+        alt={config.imageAlt || "Project screenshot"}
+        fill
+        className={shareCover ? "object-contain" : "object-contain p-2"}
+        sizes={shareCover ? "304px" : sizes}
+      />
+    );
+
     return (
       <VisualFrame slug={slug} className={className} animated={animated} gradient={gradient}>
-        <Image
-          src={config.imageSrc}
-          alt={config.imageAlt || "Project screenshot"}
-          fill
-          className="object-contain p-2"
-          sizes={sizes}
-        />
+        {shareCover ? (
+          <div className="absolute inset-0 grid place-items-center px-2">
+            <ViewTransition
+              name={coverName}
+              default="none"
+              share={{ [coverName]: "portfolio-project-cover" }}
+            >
+              <div className="portfolio-project-cover-image relative aspect-video w-full">
+                {image}
+              </div>
+            </ViewTransition>
+          </div>
+        ) : image}
       </VisualFrame>
     );
   }

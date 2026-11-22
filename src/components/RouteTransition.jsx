@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 function restoreViewportCapture() {
   document.documentElement.style.viewTransitionName = "root";
+  document.querySelector("body > header")?.style.removeProperty("view-transition-name");
 }
 
 export default function RouteTransition() {
@@ -13,10 +14,11 @@ export default function RouteTransition() {
   useLayoutEffect(() => {
     const viewport = document.documentElement;
 
-    // The outgoing snapshot is already captured. Keep the incoming page live
-    // so a second navigation can still reach its links during the fade.
+    // The outgoing snapshots are already captured. Keep the incoming page and
+    // header live so another navigation can still reach their links.
     if (CSS.supports("selector(:active-view-transition)") && viewport.matches(":active-view-transition")) {
       viewport.style.viewTransitionName = "none";
+      document.querySelector("body > header")?.style.setProperty("view-transition-name", "none");
     }
   }, [pathname]);
 
