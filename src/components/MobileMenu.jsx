@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useIsPresent } from "framer-motion";
 import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 import DownloadCvLink from "./DownloadCvLink";
@@ -10,6 +11,13 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "Work", href: "/work" },
 ];
+
+function isLinkActive(linkHref, pathname) {
+  if (linkHref === "/") {
+    return pathname === "/";
+  }
+  return pathname === linkHref || pathname.startsWith(`${linkHref}/`);
+}
 
 const containerVariants = {
   hidden: {},
@@ -55,6 +63,7 @@ export default function MobileMenu({ isOpen, onClose, onDownload }) {
 }
 
 function MobileMenuPanel({ reducedMotion, onClose, onDownload }) {
+  const pathname = usePathname();
   const isPresent = useIsPresent();
 
   return (
@@ -79,17 +88,23 @@ function MobileMenuPanel({ reducedMotion, onClose, onDownload }) {
         className="flex flex-col gap-2"
         role="list"
       >
-        {navLinks.map((link) => (
-          <motion.li key={link.href} variants={itemVariants} data-mobile-menu-reveal>
-            <Link
-              href={link.href}
-              onClick={onClose}
-              className="block font-syne font-bold text-5xl text-text-light hover:text-accent transition-colors duration-300 py-2 border-b border-border"
-            >
-              {link.label}
-            </Link>
-          </motion.li>
-        ))}
+        {navLinks.map((link) => {
+          const active = isLinkActive(link.href, pathname);
+          return (
+            <motion.li key={link.href} variants={itemVariants} data-mobile-menu-reveal>
+              <Link
+                href={link.href}
+                onClick={onClose}
+                aria-current={active ? "page" : undefined}
+                className={`block font-syne font-bold text-5xl transition-colors duration-300 py-2 border-b border-border ${
+                  active ? "text-accent" : "text-text-light hover:text-accent"
+                }`}
+              >
+                {link.label}
+              </Link>
+            </motion.li>
+          );
+        })}
         <li className="mt-4">
           <DownloadCvLink
             className="inline-flex min-h-11 touch-manipulation"
