@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 
 const ACCENT = "#D8FF3E";
 const MUTED = "#6b7280";
@@ -11,11 +12,14 @@ const BORDER_COLOR = "#2a2a2a";
 // ─── Shared Frame ────────────────────────────────────────────────
 
 function VisualFrame({ slug, className, animated, gradient, children }) {
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <motion.div
       className={`relative overflow-hidden bg-border rounded-sm ${className}`}
-      whileHover={animated ? { scale: 1.02 } : {}}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      animate={animated && reducedMotion ? { scale: 1 } : undefined}
+      whileHover={animated && !reducedMotion ? { scale: 1.02 } : undefined}
+      transition={reducedMotion ? { duration: 0 } : { duration: 0.4, ease: "easeOut" }}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} />
 

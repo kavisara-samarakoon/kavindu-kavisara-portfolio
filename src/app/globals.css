@@ -169,6 +169,15 @@ img {
   color: var(--text-dark);
 }
 
+[data-mobile-menu]:has(:focus-visible) {
+  transform: none !important;
+}
+
+[data-mobile-menu]:has(:focus-visible) [data-mobile-menu-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -176,6 +185,19 @@ img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  [data-mobile-menu] {
+    transform: none !important;
+  }
+
+  [data-mobile-menu-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-mobile-menu][inert] {
+    display: none;
   }
 }
 

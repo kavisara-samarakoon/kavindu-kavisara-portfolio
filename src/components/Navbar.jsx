@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
+import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 import DownloadCvLink from "./DownloadCvLink";
 import MobileMenu from "./MobileMenu";
 
@@ -13,12 +14,16 @@ const navLinks = [
   { label: "Work", href: "/work" },
 ];
 
+const visibleHeader = { opacity: 1, y: 0 };
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const pathname = usePathname();
   const [menuPathname, setMenuPathname] = useState(pathname);
+  const reducedMotion = usePrefersReducedMotion();
+  const entrance = useAnimationControls();
 
   if (menuPathname !== pathname) {
     setMenuPathname(pathname);
@@ -33,13 +38,27 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (reducedMotion) {
+      entrance.stop();
+      entrance.set(visibleHeader);
+    } else {
+      entrance.start(visibleHeader);
+    }
+  }, [entrance, reducedMotion]);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    menuButtonRef.current?.focus({ preventScroll: true });
+  };
+
   return (
     <>
       <motion.header
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={entrance}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 motion-reduce:!transform-none motion-reduce:!opacity-100 ${scrolled
             ? "bg-bg-dark/95 backdrop-blur-sm border-b border-border"
             : "bg-transparent"
           }`}
@@ -101,7 +120,7 @@ export default function Navbar() {
 
               <button
                 ref={menuButtonRef}
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={menuOpen ? closeMenu : () => setMenuOpen(true)}
                 className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent group"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
@@ -126,11 +145,8 @@ export default function Navbar() {
 
       <MobileMenu
         isOpen={menuOpen}
-        onClose={() => setMenuOpen(false)}
-        onDownload={() => {
-          setMenuOpen(false);
-          menuButtonRef.current?.focus({ preventScroll: true });
-        }}
+        onClose={closeMenu}
+        onDownload={closeMenu}
       />
     </>
   );
