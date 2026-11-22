@@ -134,12 +134,18 @@
 }
 
 .affordance,
+.category,
 .backTitle {
   display: none;
 }
 
 .arrow {
   flex: none;
+}
+
+/* Cancel pending reveal transitions when the card returns to its static layout. */
+.back :is(.category, .backTitle, .description, .technologies li, .action) {
+  transition-property: none;
 }
 
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) and (not (any-pointer: coarse)) and (prefers-reduced-motion: no-preference) {
@@ -178,10 +184,29 @@
   }
 
   .back {
+    --reveal-ease: cubic-bezier(0.23, 1, 0.32, 1);
     grid-template-rows: 1fr auto;
     outline-color: var(--accent);
     background: linear-gradient(150deg, var(--border), var(--bg-dark) 68%);
     transform: rotateY(180deg);
+  }
+
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .category::before {
+    flex: 0 0 0.875rem;
+    height: 1px;
+    background-color: currentColor;
+    content: "";
   }
 
   .backTitle {
@@ -193,15 +218,38 @@
 
   .details {
     grid-area: 1 / 1;
+    grid-template-rows: auto auto 1fr auto;
+    align-content: stretch;
+    gap: 0.625rem;
     padding: var(--card-padding) var(--card-padding) 0;
+  }
+
+  .description {
+    align-self: center;
   }
 
   .technologies li {
     background-color: var(--border);
+    border-color: color-mix(in srgb, var(--text-light) 14%, var(--border));
+    border-radius: 0.375rem;
+  }
+
+  .technologies .moreTechnologies {
+    background-color: transparent;
+    border-color: color-mix(in srgb, var(--accent) 24%, var(--border));
+    color: var(--accent);
   }
 
   .action {
     grid-area: 2 / 1;
+    border-top-color: color-mix(in srgb, var(--accent) 24%, var(--border));
+  }
+
+  .action .arrow {
+    box-sizing: content-box;
+    padding: 0.25rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+    border-radius: 50%;
   }
 
   .affordance {
@@ -215,6 +263,35 @@
   }
 
   .card:focus-visible .rotor {
+    transition: none;
+  }
+
+  .category { --reveal-delay: 280ms; }
+  .backTitle { --reveal-delay: 305ms; }
+  .description { --reveal-delay: 330ms; }
+  .technologies li { --reveal-delay: 350ms; }
+  .technologies li:nth-child(2) { --reveal-delay: 365ms; }
+  .technologies li:nth-child(3) { --reveal-delay: 380ms; }
+  .technologies li:nth-child(4) { --reveal-delay: 395ms; }
+  .technologies li:nth-child(5) { --reveal-delay: 410ms; }
+  .action { --reveal-delay: 420ms; }
+
+  /* The 560ms rotor crosses edge-on at 280ms. Keep reverse-face text
+     readable even if hover is interrupted before its transition begins. */
+  .back :is(.category, .backTitle, .description, .technologies li, .action) {
+    opacity: 0.68;
+    transform: translateY(8px);
+    transition: opacity 140ms var(--reveal-ease), transform 140ms var(--reveal-ease);
+  }
+
+  .card:hover .back :is(.category, .backTitle, .description, .technologies li, .action),
+  .card:focus-visible .back :is(.category, .backTitle, .description, .technologies li, .action) {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--reveal-delay);
+  }
+
+  .card:focus-visible .back :is(.category, .backTitle, .description, .technologies li, .action) {
     transition: none;
   }
 }

@@ -65,6 +65,7 @@ export default function ProjectCard({ project }) {
 
         <div className={styles.back}>
           <div className={styles.details}>
+            <span className={styles.category}>{project.type}</span>
             <p className={`${styles.title} ${styles.backTitle}`} aria-hidden="true">
               {project.title}
             </p>
@@ -75,7 +76,9 @@ export default function ProjectCard({ project }) {
               {technologies.map((technology) => (
                 <li key={technology}>{technology}</li>
               ))}
-              {remainingTechnologies > 0 && <li>+{remainingTechnologies} more</li>}
+              {remainingTechnologies > 0 && (
+                <li className={styles.moreTechnologies}>+{remainingTechnologies} more</li>
+              )}
             </ul>
           </div>
 
