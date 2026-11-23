@@ -2,12 +2,13 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import Reveal from "@/components/Reveal";
+import { routeMetadata } from "@/lib/siteMetadata";
 
-export const metadata = {
+export const metadata = routeMetadata("/about", {
   title: "About",
   description:
     "Learn about Kavisara Samarakoon — a Computer Networks student focused on cybersecurity, network security, system administration, cloud technologies, and secure full-stack development.",
-};
+});
 
 export default function AboutPage() {
   return (

@@ -7,6 +7,7 @@ import ProjectVisual from "@/components/ProjectVisual";
 import { ProjectTitleTransition } from "@/components/ProjectTransitions";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
+import { routeMetadata } from "@/lib/siteMetadata";
 
 export async function generateStaticParams() {
   const slugs = getAllProjectSlugs();
@@ -18,10 +19,11 @@ export async function generateMetadata({ params }) {
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
 
-  return {
+  return routeMetadata(`/work/${project.slug}`, {
     title: project.title,
     description: project.shortDescription,
-  };
+    image: project.mainImage,
+  });
 }
 
 export default async function ProjectDetailPage({ params }) {

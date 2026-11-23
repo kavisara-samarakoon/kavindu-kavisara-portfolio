@@ -6,12 +6,13 @@ import Footer from "@/components/Footer";
 import ProjectVisual from "@/components/ProjectVisual";
 import { ProjectPreviewLink, ProjectTitleTransition } from "@/components/ProjectTransitions";
 import GitHubHighlights from "@/components/GitHubHighlights";
+import { routeMetadata } from "@/lib/siteMetadata";
 
-export const metadata = {
+export const metadata = routeMetadata("/work", {
   title: "Work",
   description:
     "Projects built by Kavisara Samarakoon — web apps, dashboards, and more.",
-};
+});
 
 export default function WorkPage() {
   return (

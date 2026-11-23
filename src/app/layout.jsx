@@ -4,6 +4,7 @@ import { Syne, DM_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import RouteTransition from "@/components/RouteTransition";
 import SmoothScroll from "@/components/SmoothScroll";
+import { isIndexable, siteOpenGraph, siteOrigin } from "@/lib/siteMetadata";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -20,6 +21,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
+  metadataBase: new URL(siteOrigin),
+  robots: isIndexable ? undefined : { index: false, follow: false },
   title: {
     default:
       "Kavisara Samarakoon — Aspiring Cybersecurity Analyst & Network Engineer",
@@ -40,15 +43,7 @@ export const metadata = {
   ],
   authors: [{ name: "Kavisara Samarakoon" }],
   creator: "Kavisara Samarakoon",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    title:
-      "Kavisara Samarakoon — Aspiring Cybersecurity Analyst & Network Engineer",
-    description:
-      "Computer Networks student building practical skills in cybersecurity, networking, systems, cloud, and secure development.",
-    siteName: "Kavisara Samarakoon Portfolio",
-  },
+  openGraph: siteOpenGraph,
   twitter: {
     card: "summary_large_image",
     title:
