@@ -24,7 +24,7 @@
 }
 
 /* Keep the persistent header aligned while the old page moves away. */
-body > header {
+[data-site-header] {
   view-transition-name: portfolio-navbar;
 }
 
@@ -61,7 +61,7 @@ body > header {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body > header {
+  [data-site-header] {
     view-transition-name: none;
   }
 

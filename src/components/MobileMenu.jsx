@@ -47,7 +47,7 @@ const panelVariants = {
   still: { x: ["0%", "0%"], transition: { duration: 0 } },
 };
 
-export default function MobileMenu({ isOpen, onClose, onDownload }) {
+export default function MobileMenu({ id, isOpen, onClose, onDownload }) {
   const reducedMotion = usePrefersReducedMotion();
 
   // Unmount an exiting panel immediately if reduced motion is enabled.
@@ -56,28 +56,27 @@ export default function MobileMenu({ isOpen, onClose, onDownload }) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <MobileMenuPanel key="menu" reducedMotion={reducedMotion} onClose={onClose} onDownload={onDownload} />
+        <MobileMenuPanel key="menu" id={id} reducedMotion={reducedMotion} onClose={onClose} onDownload={onDownload} />
       )}
     </AnimatePresence>
   );
 }
 
-function MobileMenuPanel({ reducedMotion, onClose, onDownload }) {
+function MobileMenuPanel({ id, reducedMotion, onClose, onDownload }) {
   const pathname = usePathname();
   const isPresent = useIsPresent();
 
   return (
-    <motion.div
+    <motion.nav
+      id={id}
+      aria-label="Primary"
       variants={panelVariants}
       initial={reducedMotion ? false : "closed"}
       animate={reducedMotion ? "still" : "visible"}
       exit="closed"
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-40 bg-bg-dark flex flex-col gap-6 overflow-y-auto px-6 pt-24 pb-12 md:hidden"
+      className="fixed inset-0 z-40 bg-bg-dark flex flex-col gap-6 overflow-y-auto overscroll-contain px-6 pt-24 pb-12 md:hidden"
       inert={!isPresent}
-      onKeyDown={(event) => {
-        if (event.key === "Escape") onClose();
-      }}
       data-mobile-menu
       data-lenis-prevent
     >
@@ -94,7 +93,7 @@ function MobileMenuPanel({ reducedMotion, onClose, onDownload }) {
             <motion.li key={link.href} variants={itemVariants} data-mobile-menu-reveal>
               <Link
                 href={link.href}
-                onClick={onClose}
+                onNavigate={onClose}
                 aria-current={active ? "page" : undefined}
                 className={`block font-syne font-bold text-5xl transition-colors duration-300 py-2 border-b border-border ${
                   active ? "text-accent" : "text-text-light hover:text-accent"
@@ -148,6 +147,6 @@ function MobileMenuPanel({ reducedMotion, onClose, onDownload }) {
           </a>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.nav>
   );
 }

@@ -170,6 +170,11 @@ img {
   transform: none !important;
 }
 
+html:has([data-mobile-navigation][aria-modal="true"]:not([data-menu-scroll-guard])) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
 [data-mobile-menu]:has(:focus-visible) [data-mobile-menu-reveal] {
   opacity: 1 !important;
   transform: none !important;

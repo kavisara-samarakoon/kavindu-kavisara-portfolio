@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, useId } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useAnimationControls, LayoutGroup } from "framer-motion";
@@ -27,6 +27,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
+  const navigationRef = useRef(null);
+  const menuId = useId();
   const pathname = usePathname();
   const [menuPathname, setMenuPathname] = useState(pathname);
   const reducedMotion = usePrefersReducedMotion();
@@ -54,14 +56,77 @@ export default function Navbar() {
     }
   }, [entrance, reducedMotion]);
 
+  useLayoutEffect(() => {
+    if (!menuOpen) return;
+
+    const navigation = navigationRef.current;
+    // Removing a classic scrollbar can switch WebKit to the desktop breakpoint.
+    const keepScrollbar = window.innerWidth >= 768;
+    if (keepScrollbar) navigation.setAttribute("data-menu-scroll-guard", "");
+    const scrollTop = window.scrollY;
+    const keepScrollPosition = () => {
+      if (window.scrollY !== scrollTop) window.scrollTo({ top: scrollTop, behavior: "instant" });
+    };
+    if (keepScrollbar) window.addEventListener("scroll", keepScrollPosition);
+
+    const main = document.querySelector("main");
+    const wasInert = main?.inert;
+    if (main) main.inert = true;
+    menuButtonRef.current?.focus({ preventScroll: true });
+
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const dismissOnDesktop = () => {
+      if (!desktop.matches) return;
+      setMenuOpen(false);
+      const target = navigation.querySelector('nav a[aria-current="page"]')
+        ?? navigation.querySelector('nav a[aria-label="Home"]');
+      target?.focus({ preventScroll: true });
+    };
+    desktop.addEventListener("change", dismissOnDesktop);
+    return () => {
+      desktop.removeEventListener("change", dismissOnDesktop);
+      if (keepScrollbar) {
+        window.removeEventListener("scroll", keepScrollPosition);
+        navigation.removeAttribute("data-menu-scroll-guard");
+      }
+      if (main) main.inert = wasInert;
+    };
+  }, [menuOpen]);
+
   const closeMenu = () => {
     setMenuOpen(false);
     menuButtonRef.current?.focus({ preventScroll: true });
   };
 
+  const handleMenuKeys = (event) => {
+    if (!menuOpen || event.defaultPrevented) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu();
+    }
+    if (event.key === "Tab" && !event.ctrlKey && !event.metaKey) {
+      const controls = [...event.currentTarget.querySelectorAll("a[href], button")]
+        .filter((control) => control.tabIndex >= 0 && control.getClientRects().length && !control.closest("[inert]"));
+      if (!controls.length) return;
+      event.preventDefault();
+      const index = controls.indexOf(document.activeElement);
+      const next = index < 0 ? 0 : (index + (event.shiftKey ? -1 : 1) + controls.length) % controls.length;
+      controls[next].focus();
+    }
+  };
+
   return (
-    <>
+    <div
+      ref={navigationRef}
+      data-mobile-navigation
+      data-lenis-prevent={menuOpen ? "" : undefined}
+      role={menuOpen ? "dialog" : undefined}
+      aria-modal={menuOpen ? true : undefined}
+      aria-label={menuOpen ? "Mobile navigation" : undefined}
+      onKeyDown={handleMenuKeys}
+    >
       <motion.header
+        data-site-header
         initial={{ opacity: 0, y: -20 }}
         animate={entrance}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -76,6 +141,7 @@ export default function Navbar() {
               href="/"
               className="flex items-center gap-3 group lg:justify-self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded-xl"
               aria-label="Home"
+              inert={menuOpen}
             >
               <div className="relative w-10 h-10 md:w-11 md:h-11 bg-accent rounded-xl border border-accent/60 flex items-center justify-center shadow-[0_0_24px_rgba(204,255,0,0.12)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_32px_rgba(204,255,0,0.2)]">
                 <span className="font-syne font-bold text-text-dark text-base md:text-lg leading-none tracking-tight">
@@ -157,6 +223,7 @@ export default function Navbar() {
                 className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent group"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
+                aria-controls={menuOpen ? menuId : undefined}
               >
                 <span
                   className={`block w-6 h-0.5 bg-text-light transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""
@@ -177,10 +244,11 @@ export default function Navbar() {
       </motion.header>
 
       <MobileMenu
+        id={menuId}
         isOpen={menuOpen}
         onClose={closeMenu}
         onDownload={closeMenu}
       />
-    </>
+    </div>
   );
 }

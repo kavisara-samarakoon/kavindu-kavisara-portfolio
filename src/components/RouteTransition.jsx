@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 function restoreViewportCapture() {
   document.documentElement.style.viewTransitionName = "root";
-  document.querySelector("body > header")?.style.removeProperty("view-transition-name");
+  document.querySelector("[data-site-header]")?.style.removeProperty("view-transition-name");
 }
 
 export default function RouteTransition() {
@@ -18,7 +18,7 @@ export default function RouteTransition() {
     // header live so another navigation can still reach their links.
     if (CSS.supports("selector(:active-view-transition)") && viewport.matches(":active-view-transition")) {
       viewport.style.viewTransitionName = "none";
-      document.querySelector("body > header")?.style.setProperty("view-transition-name", "none");
+      document.querySelector("[data-site-header]")?.style.setProperty("view-transition-name", "none");
     }
   }, [pathname]);
 
