@@ -123,15 +123,23 @@ export default function Hero() {
             className="opacity-0 hidden xl:block w-[clamp(260px,18vw,340px)] justify-self-end self-center xl:mt-3 pointer-events-none"
           >
             <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
-              <Image
-                src="/images/kavindu-profile.jpg"
-                alt="Kavisara Samarakoon"
-                width={900}
-                height={1200}
-                sizes="(min-width: 1280px) 18vw, 0px"
-                className="object-cover w-full h-auto"
-                priority
-              />
+              <picture className="block">
+                {/* Below Tailwind's xl breakpoint, select a transparent pixel without a request. */}
+                <source
+                  media="not all and (min-width: 1280px)"
+                  srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                />
+                <Image
+                  src="/images/kavindu-profile.jpg"
+                  alt="Kavisara Samarakoon"
+                  width={900}
+                  height={1200}
+                  sizes="18vw"
+                  className="object-cover w-full h-auto"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </picture>
               <div
                 className="absolute top-4 right-4 w-8 h-8 border-t border-r opacity-40"
                 style={{ borderColor: "var(--accent)" }}
