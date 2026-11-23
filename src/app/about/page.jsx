@@ -70,7 +70,7 @@ function IntroSection() {
                   alt="Kavisara Samarakoon"
                   width={720}
                   height={960}
-                  sizes="(min-width: 1024px) 240px, (min-width: 768px) 200px, 100vw"
+                  sizes="(min-width: 1400px) 248px, (min-width: 1280px) calc((100vw - 25rem) / 4 - 2px), (min-width: 1024px) calc((100vw - 21rem) / 4 - 2px), (min-width: 768px) calc(100vw - 6rem - 2px), calc(100vw - 3rem - 2px)"
                   className="object-cover w-full h-auto"
                 />
                 <div

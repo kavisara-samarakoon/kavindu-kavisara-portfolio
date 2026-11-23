@@ -560,7 +560,7 @@ function ProjectGallery({ project }) {
                     alt={img.alt}
                     fill
                     className="object-contain p-4"
-                    sizes="(max-width: 768px) 100vw, 80vw"
+                    sizes="(min-width: 1024px) min(80vw, 1240px), (min-width: 768px) calc(100vw - 8.125rem), calc(100vw - 5.125rem)"
                   />
                 </div>
                 {img.caption && (
