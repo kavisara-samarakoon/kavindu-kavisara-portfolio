@@ -827,6 +827,19 @@ export default function ProjectVisual({
   const config = projectVisuals[slug];
   const gradient = config?.gradient || "from-accent/20 via-accent/5 to-transparent";
 
+  // When a specific SVG variant is requested and exists, prefer it over the
+  // image fallback. The cover image is used for shared page transitions
+  // (shareCover) and as a fallback when no SVG variant is registered.
+  const VariantComponent = config?.[variant];
+
+  if (slug === "unimatelk" && !shareCover && VariantComponent) {
+    return (
+      <VisualFrame slug={slug} className={className} animated={animated} gradient={gradient}>
+        <VariantComponent />
+      </VisualFrame>
+    );
+  }
+
   if (config?.imageSrc) {
     const coverName = `project-cover-${slug}`;
     // Both shared snapshots use the same optimized image candidate.
