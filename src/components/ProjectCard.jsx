@@ -1,81 +1,113 @@
 "use client";
 
+import { useId } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import ProjectVisual from "./ProjectVisual";
+import { ProjectTitleTransition, projectTitleType, useProjectCardRotation } from "./ProjectTransitions";
+import styles from "./ProjectCard.module.css";
 
-export default function ProjectCard({ project, index = 0 }) {
+const coverSizes = [
+  "(min-width: 1400px) 400px",
+  "(min-width: 1280px) calc((100vw - 12.5rem) / 3)",
+  "(min-width: 768px) calc((100vw - 7.25rem) / 2)",
+  "calc(100vw - 3rem)",
+].join(", ");
+
+export default function ProjectCard({ project, compactList = false }) {
+  const id = useId();
+  const rotates = useProjectCardRotation();
+  const titleId = `${id}-title`;
+  const descriptionId = `${id}-description`;
+  const actionId = `${id}-action`;
+  const technologies = project.tech.slice(0, 4);
+  const remainingTechnologies = project.tech.length - technologies.length;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.7,
-        delay: index * 0.1,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="group relative h-full"
+    <Link
+      href={`/work/${project.slug}`}
+      transitionTypes={compactList || !rotates ? [projectTitleType(project.slug)] : undefined}
+      aria-labelledby={`${titleId} ${actionId}`}
+      aria-describedby={descriptionId}
+      className={styles.card}
     >
-      <Link href={`/work/${project.slug}`} className="block h-full">
-        <div className="flex h-full flex-col gap-4 p-5 md:p-6 border border-border hover:border-accent/30 rounded-sm transition-all duration-500 bg-border/20 hover:bg-border/40">
-          <div className="flex items-center justify-between">
-            <span className="font-syne font-bold text-muted text-sm">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div className="flex flex-wrap items-center justify-end gap-2">
-              <span className="tag text-xs">{project.context}</span>
-              <span className="tag text-xs text-accent border-accent/30">
-                {project.status}
-              </span>
-              <span className="text-muted font-dm text-xs">{project.year}</span>
-            </div>
+      <div className={styles.rotor}>
+        <div className={styles.front}>
+          <div className={styles.cover}>
+            <ProjectVisual
+              slug={project.slug}
+              className={styles.image}
+              animated={false}
+              sizes={coverSizes}
+            />
           </div>
 
-          <ProjectVisual
-            slug={project.slug}
-            className="w-full h-40 md:h-48"
-            animated={false}
-          />
+          <div className={styles.summary}>
+            <div className={styles.context}>
+              <span>{project.context}</span>
+              <span>{project.year}</span>
+            </div>
+            <ProjectTitleTransition slug={project.slug} layout={compactList ? "compact" : undefined}>
+              <h3 id={titleId} className={styles.title}>{project.title}</h3>
+            </ProjectTitleTransition>
+            <span className={styles.status}>{project.status}</span>
+          </div>
 
-          <div className="flex flex-col gap-3">
-            <h3 className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
+          <span className={styles.affordance} aria-hidden="true">
+            Project details
+            <svg
+              className={styles.arrow}
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20 7v5h-5m5 0a8 8 0 1 0-2 5.3" />
+            </svg>
+          </span>
+        </div>
+
+        <div className={styles.back}>
+          <div className={styles.details}>
+            <span className={styles.category}>{project.type}</span>
+            <p className={`${styles.title} ${styles.backTitle}`} aria-hidden="true">
               {project.title}
-            </h3>
-            <p className="font-dm text-muted text-sm leading-relaxed">
+            </p>
+            <p id={descriptionId} className={styles.description}>
               {project.shortDescription}
             </p>
+            <ul className={styles.technologies} aria-label="Technologies" role="list">
+              {technologies.map((technology) => (
+                <li key={technology}>{technology}</li>
+              ))}
+              {remainingTechnologies > 0 && (
+                <li className={styles.moreTechnologies}>+{remainingTechnologies} more</li>
+              )}
+            </ul>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {project.tech.slice(0, 4).map((tech) => (
-              <span key={tech} className="tag text-xs">
-                {tech}
-              </span>
-            ))}
-            {project.tech.length > 4 && (
-              <span className="tag text-xs">+{project.tech.length - 4} more</span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-2 text-accent font-dm text-sm font-medium group/link mt-auto pt-2">
-            <span>{project.ctaLabel || "View Project"}</span>
+          <span id={actionId} className={styles.action}>
+            {project.ctaLabel || "View Project"}
             <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
-              fill="none"
+              className={styles.arrow}
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
+              fill="none"
               stroke="currentColor"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+              <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </div>
+          </span>
         </div>
-      </Link>
-    </motion.div>
+      </div>
+    </Link>
   );
 }

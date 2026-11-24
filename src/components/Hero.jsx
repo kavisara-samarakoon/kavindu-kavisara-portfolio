@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
+import { createMotionContext } from "@/lib/animations";
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -16,7 +17,7 @@ export default function Hero() {
   const scrollIndicatorRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    return createMotionContext(heroRef, () => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
@@ -60,9 +61,17 @@ export default function Hero() {
           { opacity: 1, duration: 0.6 },
           "-=0.2"
         );
-    }, heroRef);
-
-    return () => ctx.revert();
+    }, () => {
+      gsap.set([
+        nameRef.current,
+        roleRef.current,
+        descRef.current,
+        ctaRef.current,
+        imageRef.current,
+      ], { opacity: 1, y: 0 });
+      gsap.set(scrollIndicatorRef.current, { opacity: 1 });
+      gsap.set(lineRef.current, { scaleX: 1 });
+    });
   }, []);
 
   return (
@@ -114,15 +123,23 @@ export default function Hero() {
             className="opacity-0 hidden xl:block w-[clamp(260px,18vw,340px)] justify-self-end self-center xl:mt-3 pointer-events-none"
           >
             <div className="relative border border-border rounded-2xl overflow-hidden bg-border/20">
-              <Image
-                src="/images/kavindu-profile.jpg"
-                alt="Kavisara Samarakoon"
-                width={900}
-                height={1200}
-                sizes="(min-width: 1280px) 18vw, 0px"
-                className="object-cover w-full h-auto"
-                priority
-              />
+              <picture className="block">
+                {/* Below Tailwind's xl breakpoint, select a transparent pixel without a request. */}
+                <source
+                  media="not all and (min-width: 1280px)"
+                  srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                />
+                <Image
+                  src="/images/kavindu-profile.jpg"
+                  alt="Kavisara Samarakoon"
+                  width={900}
+                  height={1200}
+                  sizes="18vw"
+                  className="object-cover w-full h-auto"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </picture>
               <div
                 className="absolute top-4 right-4 w-8 h-8 border-t border-r opacity-40"
                 style={{ borderColor: "var(--accent)" }}

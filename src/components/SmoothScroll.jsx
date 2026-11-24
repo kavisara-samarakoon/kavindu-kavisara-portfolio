@@ -3,37 +3,60 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll({ children }) {
   const lenisRef = useRef(null);
-  const rafIdRef = useRef(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: "vertical",
-      smooth: true,
-      smoothTouch: false,
-      touchMultiplier: 2,
-    });
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let rafId = null;
 
-    lenisRef.current = lenis;
+    const stop = () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      const lenis = lenisRef.current;
+      if (lenis) {
+        lenis.off("scroll", ScrollTrigger.update);
+        lenis.destroy();
+        lenisRef.current = null;
+      }
+    };
 
-    function raf(time) {
-      lenis.raf(time);
-      rafIdRef.current = requestAnimationFrame(raf);
-    }
+    const update = () => {
+      stop();
+      if (preference.matches) return;
 
-    rafIdRef.current = requestAnimationFrame(raf);
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        smoothWheel: true,
+        syncTouch: false,
+        touchMultiplier: 2,
+        autoRaf: false,
+      });
+
+      lenisRef.current = lenis;
+      lenis.on("scroll", ScrollTrigger.update);
+
+      function raf(time) {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
+
+      rafId = requestAnimationFrame(raf);
+    };
+
+    update();
+    preference.addEventListener("change", update);
 
     return () => {
-      if (rafIdRef.current) {
-        cancelAnimationFrame(rafIdRef.current);
-      }
-      lenis.destroy();
-      lenisRef.current = null;
+      preference.removeEventListener("change", update);
+      stop();
     };
   }, []);
 

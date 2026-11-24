@@ -1,7 +1,9 @@
 "use client";
 
+import { ViewTransition } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 
 const ACCENT = "#D8FF3E";
 const MUTED = "#6b7280";
@@ -11,11 +13,14 @@ const BORDER_COLOR = "#2a2a2a";
 // ─── Shared Frame ────────────────────────────────────────────────
 
 function VisualFrame({ slug, className, animated, gradient, children }) {
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <motion.div
       className={`relative overflow-hidden bg-border rounded-sm ${className}`}
-      whileHover={animated ? { scale: 1.02 } : {}}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      animate={animated && reducedMotion ? { scale: 1 } : undefined}
+      whileHover={animated && !reducedMotion ? { scale: 1.02 } : undefined}
+      transition={reducedMotion ? { duration: 0 } : { duration: 0.4, ease: "easeOut" }}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} />
 
@@ -816,21 +821,53 @@ export default function ProjectVisual({
   className = "",
   animated = true,
   variant = "overview",
+  sizes = "(max-width: 768px) 100vw, 50vw",
+  shareCover = false,
 }) {
   const config = projectVisuals[slug];
   const gradient = config?.gradient || "from-accent/20 via-accent/5 to-transparent";
 
-  // Image-based visual (used by SentinelLite AI)
-  if (config?.imageSrc) {
+  // When a specific SVG variant is requested and exists, prefer it over the
+  // image fallback. The cover image is used for shared page transitions
+  // (shareCover) and as a fallback when no SVG variant is registered.
+  const VariantComponent = config?.[variant];
+
+  if (slug === "unimatelk" && !shareCover && VariantComponent) {
     return (
       <VisualFrame slug={slug} className={className} animated={animated} gradient={gradient}>
-        <Image
-          src={config.imageSrc}
-          alt={config.imageAlt || "Project screenshot"}
-          fill
-          className="object-contain p-2"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
+        <VariantComponent />
+      </VisualFrame>
+    );
+  }
+
+  if (config?.imageSrc) {
+    const coverName = `project-cover-${slug}`;
+    // Both shared snapshots use the same optimized image candidate.
+    const image = (
+      <Image
+        src={config.imageSrc}
+        alt={config.imageAlt || "Project screenshot"}
+        fill
+        className={shareCover ? "object-contain" : "object-contain p-2"}
+        sizes={shareCover ? "304px" : sizes}
+      />
+    );
+
+    return (
+      <VisualFrame slug={slug} className={className} animated={animated} gradient={gradient}>
+        {shareCover ? (
+          <div className="absolute inset-0 grid place-items-center px-2">
+            <ViewTransition
+              name={coverName}
+              default="none"
+              share={{ [coverName]: "portfolio-project-cover" }}
+            >
+              <div className="portfolio-project-cover-image relative aspect-video w-full">
+                {image}
+              </div>
+            </ViewTransition>
+          </div>
+        ) : image}
       </VisualFrame>
     );
   }

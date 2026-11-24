@@ -1,16 +1,19 @@
 "use client";
 
 import { skillCategories, techTags } from "@/data/skills";
-import Reveal from "./Reveal";
+import useScrollEntrance from "@/lib/useScrollEntrance";
 
 export default function Skills() {
+  const entranceRef = useScrollEntrance();
+
   return (
-    <section className="section-padding light-section">
+    <section ref={entranceRef} className="section-padding light-section">
       <div className="container-custom">
         {/* ── Section header ── */}
-        <Reveal direction="up">
+        <div data-scroll-entrance="">
           <div className="mb-16 md:mb-20">
             <span
+              data-scroll-entrance-item=""
               className="tag mb-4 inline-block"
               style={{
                 borderColor: "var(--border-light)",
@@ -20,17 +23,23 @@ export default function Skills() {
               Technical Skills
             </span>
 
-            <h2 className="font-syne font-bold text-text-dark text-4xl md:text-5xl lg:text-6xl leading-tight">
+            <h2
+              data-scroll-entrance-item=""
+              className="font-syne font-bold text-text-dark text-4xl md:text-5xl lg:text-6xl leading-tight"
+            >
               Skills &amp; Technical Focus
             </h2>
 
-            <p className="font-dm text-muted text-base md:text-lg max-w-2xl leading-relaxed mt-6">
+            <p
+              data-scroll-entrance-item=""
+              className="font-dm text-muted text-base md:text-lg max-w-2xl leading-relaxed mt-6"
+            >
               A practical overview of the tools, technologies, and technical
               areas I am actively building through coursework, labs, and
               portfolio projects.
             </p>
           </div>
-        </Reveal>
+        </div>
 
         {/* ── Skill category cards ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 mb-20 items-stretch">
@@ -42,7 +51,7 @@ export default function Skills() {
         {/* ── Tag cloud ── */}
         <div className="divider-light mb-16" />
 
-        <Reveal direction="up" delay={0.1}>
+        <div data-scroll-entrance="">
           <div>
             <p className="font-dm text-muted text-sm uppercase tracking-widest mb-8">
               All Tools & Technologies
@@ -59,7 +68,7 @@ export default function Skills() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -69,7 +78,7 @@ function SkillCategory({ category, index }) {
   const number = String(category.id).padStart(2, "0");
 
   return (
-    <Reveal direction="up" delay={index * 0.1} className="flex">
+    <div data-scroll-entrance="" data-scroll-entrance-delay={index * 0.04} className="flex">
       <div className="group relative h-full rounded-2xl border border-border-light bg-white/60 p-6 sm:p-8 flex flex-col gap-5 hover:border-accent/40 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(216,255,62,0.06)] transition-all duration-300 overflow-hidden">
         {/* Accent top bar */}
         <div
@@ -117,6 +126,6 @@ function SkillCategory({ category, index }) {
           ))}
         </div>
       </div>
-    </Reveal>
+    </div>
   );
 }

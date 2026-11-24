@@ -1,8 +1,20 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import useScrollEntrance from "@/lib/useScrollEntrance";
 import Reveal from "./Reveal";
 
+function CTAReveal({ isHome, delay, animate = true, children }) {
+  if (isHome) {
+    return <div data-scroll-entrance-item={animate ? "" : undefined}>{children}</div>;
+  }
+
+  return <Reveal direction="up" delay={delay}>{children}</Reveal>;
+}
+
 export default function CTA({ light = false }) {
+  const isHome = usePathname() === "/";
+  const entranceRef = useScrollEntrance(isHome);
   const bgClass = light ? "light-section" : "bg-bg-dark";
   const headingClass = light ? "text-text-dark" : "text-text-light";
   const mutedClass = light ? "text-text-dark/65" : "text-muted";
@@ -14,10 +26,13 @@ export default function CTA({ light = false }) {
     : "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark";
 
   return (
-    <section className={`section-padding ${bgClass}`}>
+    <section ref={entranceRef} className={`section-padding ${bgClass}`}>
       <div className="container-custom">
-        <div className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
-          <Reveal direction="up">
+        <div
+          data-scroll-entrance={isHome ? "" : undefined}
+          className="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto"
+        >
+          <CTAReveal isHome={isHome}>
             <span
               className="tag"
               style={
@@ -31,9 +46,9 @@ export default function CTA({ light = false }) {
             >
               Get In Touch
             </span>
-          </Reveal>
+          </CTAReveal>
 
-          <Reveal direction="up" delay={0.1}>
+          <CTAReveal isHome={isHome} delay={0.1}>
             <h2
               className={`font-syne font-bold ${headingClass} text-4xl md:text-5xl lg:text-6xl leading-tight`}
             >
@@ -41,9 +56,9 @@ export default function CTA({ light = false }) {
               <span className="text-accent">networking, security,</span> or
               tech opportunities.
             </h2>
-          </Reveal>
+          </CTAReveal>
 
-          <Reveal direction="up" delay={0.15}>
+          <CTAReveal isHome={isHome} delay={0.15}>
             <p
               className={`font-dm ${mutedClass} text-base md:text-lg leading-relaxed max-w-2xl`}
             >
@@ -52,9 +67,9 @@ export default function CTA({ light = false }) {
               network engineering, system administration, cloud, and full-stack
               development.
             </p>
-          </Reveal>
+          </CTAReveal>
 
-          <Reveal direction="up" delay={0.2}>
+          <CTAReveal isHome={isHome} delay={0.2} animate={false}>
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="mailto:kavisaraksamarakoon@gmail.com"
@@ -95,9 +110,9 @@ export default function CTA({ light = false }) {
                 View GitHub
               </a>
             </div>
-          </Reveal>
+          </CTAReveal>
 
-          <Reveal direction="up" delay={0.25}>
+          <CTAReveal isHome={isHome} delay={0.25} animate={false}>
             <p
               className={`font-dm text-xs ${mutedClass} max-w-lg leading-relaxed opacity-70`}
             >
@@ -105,7 +120,7 @@ export default function CTA({ light = false }) {
               your email app, and your message is used only to respond to your
               enquiry.
             </p>
-          </Reveal>
+          </CTAReveal>
         </div>
       </div>
     </section>

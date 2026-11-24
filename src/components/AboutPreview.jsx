@@ -66,7 +66,8 @@ export default function AboutPreview() {
             </Reveal>
           </div>
 
-          <Reveal direction="left" delay={0.2}>
+          {/* The corner uses 12px of the 24px mobile gutter. */}
+          <Reveal direction="left" distance={12} delay={0.2}>
             <div className="relative">
               <div className="p-8 md:p-10 border border-border rounded-sm bg-border/20">
                 <div className="grid grid-cols-2 gap-8 mb-10">

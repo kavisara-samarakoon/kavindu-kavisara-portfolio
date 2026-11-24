@@ -1,0 +1,77 @@
+.portfolio-route-marker {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(.portfolio-route-marker) {
+  display: none;
+}
+
+::view-transition-group(root) {
+  animation: none;
+}
+
+::view-transition-old(root) {
+  animation: 280ms ease-in-out both portfolio-route-fade;
+  mix-blend-mode: normal;
+}
+
+/* Keep the persistent header aligned while the old page moves away. */
+[data-site-header] {
+  view-transition-name: portfolio-navbar;
+}
+
+::view-transition-group(portfolio-navbar) {
+  z-index: 2;
+  animation: none;
+}
+
+::view-transition-old(portfolio-navbar) {
+  display: none;
+}
+
+::view-transition-new(portfolio-navbar) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(.portfolio-project-title),
+::view-transition-group(.portfolio-project-cover) {
+  z-index: 1;
+  animation-duration: 320ms;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes portfolio-route-fade {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-5px); }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .portfolio-project-cover-image {
+    view-transition-name: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-site-header] {
+    view-transition-name: none;
+  }
+
+  ::view-transition-old(root) {
+    opacity: 0;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services } from "@/data/services";
 import Reveal from "./Reveal";
+import { createMotionContext } from "@/lib/animations";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -50,26 +51,26 @@ function ServiceRow({ service, index }) {
 
     const el = rowRef.current;
 
-    const tween = gsap.fromTo(
-      el,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        delay: index * 0.05,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-
-    return () => {
-      tween.kill();
-    };
+    return createMotionContext(rowRef, () => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: index * 0.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, () => {
+      gsap.set(el, { opacity: 1, y: 0 });
+    });
   }, [index]);
 
   return (
@@ -81,15 +82,15 @@ function ServiceRow({ service, index }) {
         {service.number}
       </span>
 
-      <h3 className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300 w-full md:w-64 shrink-0">
+      <h3 className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300 w-full md:w-1/4 lg:w-64 shrink-0">
         {service.title}
       </h3>
 
-      <p className="font-dm text-muted text-sm md:text-base leading-relaxed flex-1">
+      <p className="font-dm text-muted text-sm md:text-base leading-relaxed min-w-0 break-words flex-1">
         {service.description}
       </p>
 
-      <div className="flex flex-wrap gap-2 md:justify-end md:w-64 shrink-0">
+      <div className="flex flex-wrap gap-2 md:justify-end md:w-1/4 lg:w-64 shrink-0">
         {service.tags.map((tag) => (
           <span key={tag} className="tag text-xs">
             {tag}

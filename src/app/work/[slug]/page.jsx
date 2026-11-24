@@ -4,8 +4,10 @@ import Image from "next/image";
 import { getProjectBySlug, getAllProjectSlugs, projects } from "@/data/projects";
 import Reveal from "@/components/Reveal";
 import ProjectVisual from "@/components/ProjectVisual";
+import { ProjectTitleTransition } from "@/components/ProjectTransitions";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
+import { routeMetadata } from "@/lib/siteMetadata";
 
 export async function generateStaticParams() {
   const slugs = getAllProjectSlugs();
@@ -13,17 +15,20 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const project = getProjectBySlug(params.slug);
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
   if (!project) return { title: "Project Not Found" };
 
-  return {
+  return routeMetadata(`/work/${project.slug}`, {
     title: project.title,
     description: project.shortDescription,
-  };
+    image: project.mainImage,
+  });
 }
 
-export default function ProjectDetailPage({ params }) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
 
   if (!project) return notFound();
 
@@ -64,6 +69,39 @@ export default function ProjectDetailPage({ params }) {
 }
 
 function ProjectHero({ project }) {
+  const fullWidthTitle = project.title.length > 24;
+  const heroColumns = fullWidthTitle
+    ? "md:grid-cols-[minmax(0,1fr)_min(23%,13rem)]"
+    : "md:grid-cols-[minmax(0,1fr)_min(28%,12rem)]";
+  const wideCover = !fullWidthTitle && (project.shortDescription.length < 145
+    ? "min-[960px]:grid-cols-[minmax(0,1fr)_min(32%,18rem)]"
+    : "min-[960px]:grid-cols-[minmax(0,1fr)_min(32%,20rem)]");
+  const title = (
+    <ProjectTitleTransition slug={project.slug}>
+      <h1 className="w-fit font-syne font-bold text-text-light text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-8">
+        {project.title}
+      </h1>
+    </ProjectTitleTransition>
+  );
+  const summary = (
+    <Reveal direction="up" delay={0.15}>
+      <p className="font-dm text-muted text-base md:text-xl max-w-2xl leading-relaxed">
+        {project.shortDescription}
+      </p>
+    </Reveal>
+  );
+  const technologies = (
+    <Reveal direction="up" delay={0.2}>
+      <div className="flex flex-wrap gap-2 mt-8">
+        {project.tech.map((tech) => (
+          <span key={tech} className="tag text-xs">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </Reveal>
+  );
+
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg-dark">
       <div className="container-custom">
@@ -100,27 +138,31 @@ function ProjectHero({ project }) {
           </div>
         </Reveal>
 
-        <Reveal direction="up" delay={0.1}>
-          <h1 className="font-syne font-bold text-text-light text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-8">
-            {project.title}
-          </h1>
-        </Reveal>
-
-        <Reveal direction="up" delay={0.15}>
-          <p className="font-dm text-muted text-base md:text-xl max-w-2xl leading-relaxed">
-            {project.shortDescription}
-          </p>
-        </Reveal>
-
-        <Reveal direction="up" delay={0.2}>
-          <div className="flex flex-wrap gap-2 mt-8">
-            {project.tech.map((tech) => (
-              <span key={tech} className="tag text-xs">
-                {tech}
-              </span>
-            ))}
+        {project.mainImage ? (
+          <div className={`md:grid md:gap-x-8 ${heroColumns} ${wideCover || ""}`}>
+            <div className={fullWidthTitle ? "md:col-span-2 md:row-start-1" : "md:col-start-1 md:row-start-1"}>
+              {title}
+            </div>
+            <div className={fullWidthTitle ? "md:col-start-1 md:row-start-2" : "md:col-span-2 md:row-start-2 min-[960px]:col-span-1"}>
+              {summary}
+            </div>
+            <div className={fullWidthTitle ? "md:col-start-1 md:row-start-3" : "md:col-span-2 md:row-start-3"}>
+              {technologies}
+            </div>
+            <ProjectVisual
+              slug={project.slug}
+              className={`hidden md:block md:col-start-2 self-start w-full aspect-video border border-border ${fullWidthTitle ? "md:row-start-2 md:row-end-4" : "md:row-start-1 min-[960px]:row-end-3"}`}
+              animated={false}
+              shareCover
+            />
           </div>
-        </Reveal>
+        ) : (
+          <>
+            <div>{title}</div>
+            {summary}
+            {technologies}
+          </>
+        )}
       </div>
     </section>
   );
@@ -518,7 +560,7 @@ function ProjectGallery({ project }) {
                     alt={img.alt}
                     fill
                     className="object-contain p-4"
-                    sizes="(max-width: 768px) 100vw, 80vw"
+                    sizes="(min-width: 1024px) min(80vw, 1240px), (min-width: 768px) calc(100vw - 8.125rem), calc(100vw - 5.125rem)"
                   />
                 </div>
                 {img.caption && (
@@ -587,15 +629,18 @@ function NextProjectSection({ currentProject, nextProject }) {
           {nextProject && nextProject.slug !== currentProject.slug && (
             <Link
               href={`/work/${nextProject.slug}`}
+              transitionTypes={[`project-title-${nextProject.slug}`]}
               className="group flex flex-col items-end gap-1"
             >
               <span className="font-dm text-muted text-xs uppercase tracking-widest">
                 Next Project
               </span>
               <div className="flex items-center gap-2">
-                <span className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
-                  {nextProject.title}
-                </span>
+                <ProjectTitleTransition slug={nextProject.slug}>
+                  <span className="font-syne font-bold text-text-light text-xl md:text-2xl group-hover:text-accent transition-colors duration-300">
+                    {nextProject.title}
+                  </span>
+                </ProjectTitleTransition>
                 <svg
                   className="w-5 h-5 text-muted group-hover:text-accent transition-all duration-300 group-hover:translate-x-1"
                   fill="none"
